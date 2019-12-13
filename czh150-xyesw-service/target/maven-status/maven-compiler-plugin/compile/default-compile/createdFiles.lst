@@ -1,0 +1,6 @@
+com\service\users\UserInfoService.class
+com\service\users\impl\UserInfoServiceImpl.class
+com\service\users\impl\UsersServiceImpl.class
+com\service\commodity\CommodityService.class
+com\service\commodity\impl\CommodityServiceImpl.class
+com\service\users\UsersService.class

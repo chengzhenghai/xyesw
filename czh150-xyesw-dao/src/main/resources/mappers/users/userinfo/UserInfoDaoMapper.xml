@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.users.userinfo.UserInfoDao">
+
+    <!-- 查询用户信息 -->
+    <select id="getInfo" resultType="com.entity.user.Userinfo">
+        select userinfoid, userid, usernumber, userimg, usershojian, userfajian, username from userinfo where userid = #{userid}
+    </select>
+
+    <!--查询所有用户信息-->
+    <select id="getInfoAll" resultType="com.entity.user.Userinfo">
+        select userinfoid, userid, usernumber, userimg, usershojian, userfajian, username from userinfo
+    </select>
+
+</mapper>

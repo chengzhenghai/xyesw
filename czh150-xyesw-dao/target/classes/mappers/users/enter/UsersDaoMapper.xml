@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.users.enter.UsersDao">
+    <select id="getUsers" resultType="com.entity.user.Users">
+        select userid, useraccount, userpass, userstate from users where useraccount = #{useraccount} and userpass = #{userpass}
+    </select>
+
+    <select id="getAdmins" resultType="com.entity.user.Administrato">
+        select adminid, adminname, adminpass from administrato where adminname = #{adminname} and adminpass = #{adminpass}
+    </select>
+</mapper>

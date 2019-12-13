@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.users.userstore.UserStoreDao">
+    <!-- 查询所有我的商品 -->
+    <select id="getMyCommodity" resultType="com.entity.commodity.Commodity">
+        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity where userid = #{userid} order by commid desc
+    </select>
+
+    <!-- 删除商品图片 -->
+    <delete id="deleteCommodityImg">
+        delete from commodityimg where commimg = #{commimg}
+    </delete>
+
+    <!-- 修改图片 -->
+    <update id="updateCommodityImg">
+        update commodityimg set commimgpath = #{commimgpath} where commimg = #{commimg}
+    </update>
+
+    <!-- 删除商品 -->
+    <delete id="deleteMyComm">
+        delete from commodity where commid = #{commid}
+    </delete>
+
+    <!-- 添加商品 -->
+    <insert id="insertMyComm">
+        insert into commodity(commname, commmoney, userid, commdrief, commimgpath) values(#{commname},#{commmoney},#{userid},#{commdrief},#{commimgpath})
+    </insert>
+
+    <!-- 修改商品 -->
+    <update id="updateMyComm">
+        update commodity set commname = #{commname}, commmoney = #{commmoney}, commdrief = #{commdrief}, commimgpath = #{commimgpath} where commid = #{commid}
+    </update>
+
+    <!-- 上传商品图片 -->
+    <insert id="insertCommImg">
+        insert into commodityimg(commid, commimgpath) values(#{commid},#{commimgpath})
+    </insert>
+
+
+</mapper>

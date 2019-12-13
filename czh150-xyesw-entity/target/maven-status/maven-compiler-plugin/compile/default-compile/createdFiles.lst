@@ -1,0 +1,11 @@
+com\entity\commodity\Commtype.class
+com\entity\user\Userinfo.class
+com\entity\commodity\CommodityImg.class
+com\entity\order\Order.class
+com\entity\order\Ordercomm.class
+com\entity\user\Announcement.class
+com\entity\user\Comment.class
+com\entity\commodity\Commodity.class
+com\entity\commodity\Types.class
+com\entity\user\Administrato.class
+com\entity\user\Users.class

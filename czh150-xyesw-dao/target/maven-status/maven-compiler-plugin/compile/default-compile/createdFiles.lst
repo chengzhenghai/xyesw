@@ -1,0 +1,3 @@
+com\dao\commodity\CommodityDao.class
+com\dao\users\UserInfoDao.class
+com\dao\users\UsersDao.class

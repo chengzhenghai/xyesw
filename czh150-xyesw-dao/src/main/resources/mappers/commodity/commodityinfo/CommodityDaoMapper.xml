@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.commodity.commodityinfo.CommodityDao">
+
+    <!-- 查询所有商品信息 -->
+    <select id="getCommodityAll" resultType="com.entity.commodity.Commodity">
+        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity order by commid desc
+    </select>
+
+    <!-- 查询单个商品 -->
+    <select id="getCommodity" resultType="com.entity.commodity.Commodity">
+        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity where commid = #{commid}
+    </select>
+
+    <!--用类型查询到商品id，在用id查询商品-->
+    <select id="getCommTypeAll" resultType="com.entity.commodity.Commodity">
+        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity where commid = #{commid} order by commid desc
+    </select>
+
+    <!-- 按名称查询商品 -->
+    <select id="getCommodityName" resultType="com.entity.commodity.Commodity">
+        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity where commname like "%"#{commname}"%" order by commid desc
+    </select>
+
+    <!-- 查询所有商品图片 -->
+    <select id="getCommodityImg" resultType="com.entity.commodity.CommodityImg">
+        select commimg, commid, commimgpath from commodityimg where commid = #{commid} order by commimg desc
+    </select>
+
+</mapper>

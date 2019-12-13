@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.commodity.commoditytype.CommTypesDao">
+    <!--查询所有商品分类-->
+    <select id="getCommTypesAll" resultType="com.entity.commodity.Types">
+        select typesid, typestext from types
+    </select>
+
+    <!--按类型查询商品id-->
+    <select id="getCommsType" resultType="com.entity.commodity.Commtype">
+        select commid from commtype where typesid = #{typesid}
+    </select>
+
+    <!--添加商品时给商品添加类型-->
+    <insert id="insertCommtype">
+        insert into commtype(commid, typesid) values(#{commid},#{typesid})
+    </insert>
+
+    <!--最新添加的商品id-->
+    <select id="commTypeId" resultType="int">
+        SELECT MAX(commid) from commodity
+    </select>
+
+    <!--删除分类-->
+    <delete id="deleteCommtype">
+        delete from commtype where commid = #{commid}
+    </delete>
+
+    <!--修改商品的分类-->
+    <update id="updateCommtype">
+        update commtype set typesid = #{typesid} where commid = #{commid}
+    </update>
+
+    <!--查询某个商品分类id-->
+    <select id="commTypeid" resultType="int">
+        select typesid from commtype where commid = #{commid}
+    </select>
+
+    <!--通过分类id查询分类-->
+    <select id="types" resultType="com.entity.commodity.Types">
+        select typesid, typestext from types where typesid = #{typesid}
+    </select>
+
+
+</mapper>
