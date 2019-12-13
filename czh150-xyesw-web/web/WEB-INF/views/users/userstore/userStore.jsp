@@ -95,11 +95,9 @@
 </div>
 
 <script>
-
     $(".commodity-info").click(function () {
         alert($(this).attr("id"));
     })
-
 </script>
 
 <script>
