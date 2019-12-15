@@ -11,42 +11,13 @@
 </head>
 <body>
 
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo" style="font-size: 40px; font-family: 楷体">XYESW</div>
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="/homepage" style="text-decoration:none;">首页</a></li>
-            <li class="layui-nav-item"><a href="/userStore" style="text-decoration:none;">我的店铺</a></li>
-            <li class="layui-nav-item"><a href="/userOrder" style="text-decoration:none;">我的订单</a></li>
-            <li class="layui-nav-item"><a href="/userInfo" style="text-decoration:none;">我的信息</a></li>
-        </ul>
-        <form method="get" action="/getCommodityName">
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <input type="text" name="commname" lay-verify="title"  placeholder="请输入"
-                           class="layui-input">
-                </li>
-                <li class="layui-nav-item">
-                    <input class="layui-btn" type="submit" value="查询">
-                </li>
-                <li class="layui-nav-item">
-                    <a href="" style="text-decoration:none;">
-                        <img src="${sessionScope.userinfo.userimg}" class="layui-nav-img">
-                        ${sessionScope.userinfo.username}
-                    </a>
-                </li>
-                <li class="layui-nav-item"><a href="/exitUser" style="text-decoration:none;">退出</a></li>
-            </ul>
-        </form>
-    </div>
-</div>
+<%@include file="../../navigationbar/navigationBar.jsp"%>
 
 <h3 style="margin-left: 30px; margin-top: 20px">我的店铺</h3>
 <hr>
 
 <a href="/insertComm" style="text-decoration:none;"><button type="button" class="btn btn-primary">添加商品</button></a>
 
-<button type="button" class="btn btn-primary">操作</button>
 <div style="width: 1100px; height: auto; margin: auto">
     <table class="table table-hover" style="width: 1000px; table-layout:fixed;">
         <tr>
@@ -58,7 +29,7 @@
             <th style="width: 300px;">操作</th>
         </tr>
         <c:forEach items="${myComm.list}" var="mycomm">
-            <tr class="commodity-info" id="${mycomm.commid}">
+            <tr>
                 <td class="commid" data-id="${mycomm.commid}">${mycomm.commid}</td>
                 <td><textarea style="width: 140px; height: 100px; resize:none; background: transparent; border-style: none;" readonly="readonly">${mycomm.commname}</textarea></td>
                 <td>${mycomm.commmoney}</td>
@@ -95,15 +66,9 @@
 </div>
 
 <script>
-    $(".commodity-info").click(function () {
-        alert($(this).attr("id"));
-    })
-</script>
-
-<script>
     layui.use('element', function(){
         var $ = layui.jquery
-            ,element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            ,element = layui.element;
     });
 </script>
 

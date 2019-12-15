@@ -103,5 +103,12 @@ public class CommodityController {
         return "users/usershopping/userRelation";
     }
 
+    //跳转选择支付方式界面
+    @RequestMapping("/commPayment")
+    public String commPayment() {
+
+        return "commodity/commoditydeal/commpayment";
+    }
+
 
 }
