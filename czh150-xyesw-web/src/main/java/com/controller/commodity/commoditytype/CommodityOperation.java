@@ -3,10 +3,12 @@ package com.controller.commodity.commoditytype;
 import com.entity.commodity.Commodity;
 import com.entity.commodity.CommodityImg;
 import com.entity.commodity.Commtype;
+import com.entity.user.Comment;
 import com.entity.user.Userinfo;
 import com.github.pagehelper.PageInfo;
 import com.service.commodity.commoditytype.CommTypesService;
 import com.service.commodity.commodityinfo.CommodityService;
+import com.service.users.comment.CommentService;
 import com.service.users.userinfo.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,8 @@ public class CommodityOperation {
     private CommTypesService commTypesService;
     @Autowired
     private UserInfoService userInfoService;
+    @Autowired
+    private CommentService commentService;
 
     //按名称查询商品
     @RequestMapping("/getCommodityName")
@@ -43,7 +47,10 @@ public class CommodityOperation {
 
     //查询商品详情
     @RequestMapping("/commodityDetails")
-    public String commodityDetails(int commid, Model model) {
+    public String commodityDetails(
+            @RequestParam(value = "pageNum", required = false, defaultValue = "1") int pageNum,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,
+            int commid, Model model) {
         //商品信息
         Commodity commodity = commodityService.getCommodity(commid);
         //商品图片
@@ -51,10 +58,14 @@ public class CommodityOperation {
         //用户信息
         int userid = commodity.getUserid();
         Userinfo info = userInfoService.getInfo(userid);
+        //商品评论
+        List<Comment> commentAll = commentService.getCommentAll(pageNum, pageSize, commid);
+        PageInfo pageInfo = new PageInfo(commentAll);
 
         model.addAttribute("commodityImg", commodityImg);
         model.addAttribute("commodity", commodity);
         model.addAttribute("userinfo", info);
+        model.addAttribute("comment", pageInfo);
         return "commodity/commodityinfo/commodityDetails";
     }
 

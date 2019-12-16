@@ -6,7 +6,7 @@
 
     <!-- 查询用户信息 -->
     <select id="getInfo" resultType="com.entity.user.Userinfo">
-        select userinfoid, userid, usernumber, userimg, usershojian, userfajian, username from userinfo where userid = #{userid}
+        select A.userinfoid, A.userid, A.usernumber, A.userimg, A.usershojian, A.userfajian, A.username, B.useraccount from userinfo A,users B where A.userid = #{userid} and A.userid = B.userid
     </select>
 
     <!--查询所有用户信息-->

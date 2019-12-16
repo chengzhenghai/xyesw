@@ -32,8 +32,8 @@
                     <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
                         <img style="max-width: 200px; height: 200px;" src="${comms.commimgpath}"/>
                     </div>
-                    <div style="margin-left: 10px">${comms.commname}</div>
-                    <div style="margin-left: 10px">￥ ${comms.commmoney}</div>
+                    <div style="margin-left: 10px; height: 20px;">${comms.commname}</div>
+                    <div style="margin-left: 10px; height: 20px;">￥ ${comms.commmoney}</div>
                 </div>
             </c:if>
             <c:if test="${comms.userid != sessionScope.users.userid}">
@@ -41,8 +41,8 @@
                     <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
                         <img style="max-width: 200px; height: 200px;" src="${comms.commimgpath}"/>
                     </div>
-                    <div style="margin-left: 10px">${comms.commname}</div>
-                    <div style="margin-left: 10px">￥ ${comms.commmoney}</div>
+                    <div style="margin-left: 10px; height: 20px;">${comms.commname}</div>
+                    <div style="margin-left: 10px; height: 20px;">￥ ${comms.commmoney}</div>
                 </div>
             </c:if>
         </a>

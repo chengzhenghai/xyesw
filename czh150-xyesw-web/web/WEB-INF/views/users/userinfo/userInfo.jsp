@@ -15,18 +15,22 @@
 <h3 style="margin-left: 30px; margin-top: 20px">我的信息</h3>
 <hr>
 
-<div style="border: 1px solid yellow; width: 800px; height: 400px; margin: auto">
+<div style="border: 1px solid yellow; width: 800px; height: 500px; margin: auto">
     <div style="margin-top: 50px; margin-left: 50px; float: left;">
         <form action="/updateCommImg" method="post" enctype="multipart/form-data">
             <input type="hidden" name="userid" value="${info.userid}" readonly="readonly">
             <img src="${info.userimg}" style="width: 300px; height: 300px; border-radius:50%; "/>
         </form>
     </div>
-    <div style="float: right; width: 400px">
+    <div style="float: right; width: 400px; margin-top: 20px;">
         <form action="/updateInfo" method="get">
             <div class="form-group">
-                <label>编号：</label>
+                <label>学号：</label>
                 <input type="text" class="form-control" name="userid" value="${info.userid}" readonly="readonly">
+            </div>
+            <div class="form-group">
+                <label>账号：</label>
+                <input type="text" class="form-control" name="useraccount" value="${info.useraccount}" readonly="readonly">
             </div>
             <div class="form-group">
                 <label>用户名：</label>
@@ -53,7 +57,7 @@
 <script>
     layui.use('element', function () {
         var $ = layui.jquery
-            , element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+            , element = layui.element;
     });
 </script>
 
