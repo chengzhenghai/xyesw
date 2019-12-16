@@ -10,35 +10,7 @@
 </head>
 <body>
 
-<div class="layui-layout layui-layout-admin">
-    <div class="layui-header">
-        <div class="layui-logo" style="font-size: 40px; font-family: 楷体">XYESW</div>
-        <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="/homepage" style="text-decoration:none;">首页</a></li>
-            <li class="layui-nav-item"><a href="/userStore" style="text-decoration:none;">我的店铺</a></li>
-            <li class="layui-nav-item"><a href="/userOrder" style="text-decoration:none;">我的订单</a></li>
-            <li class="layui-nav-item"><a href="/userInfo" style="text-decoration:none;">我的信息</a></li>
-        </ul>
-        <form method="get" action="/getCommodityName">
-            <ul class="layui-nav layui-layout-right">
-                <li class="layui-nav-item">
-                    <input type="text" name="commname" lay-verify="title" placeholder="请输入"
-                           class="layui-input">
-                </li>
-                <li class="layui-nav-item">
-                    <input class="layui-btn" type="submit" value="查询">
-                </li>
-                <li class="layui-nav-item">
-                    <a href="" style="text-decoration:none;">
-                        <img src="${sessionScope.userinfo.userimg}" class="layui-nav-img">
-                        ${sessionScope.userinfo.username}
-                    </a>
-                </li>
-                <li class="layui-nav-item"><a href="/exitUser" style="text-decoration:none;">退出</a></li>
-            </ul>
-        </form>
-    </div>
-</div>
+<%@include file="../../navigationbar/navigationBar.jsp"%>
 
 <h3 style="margin-left: 30px; margin-top: 20px">联系商家</h3>
 <hr>
@@ -51,7 +23,9 @@
                 ${commodity.commname}
             </div>
         </a>
-        <button class="btn btn-primary" style="position: absolute; bottom: 0; right: 0">立即购买</button>
+        <a href="/commPayment">
+            <button class="btn btn-primary" style="position: absolute; bottom: 0; right: 0">立即购买</button>
+        </a>
     </div>
     <div style="border: 1px solid greenyellow; width: 800px; height: 450px;">
         <div style="width: 400px; height: auto; float: left; margin-left: 10px; margin-top: 10px">

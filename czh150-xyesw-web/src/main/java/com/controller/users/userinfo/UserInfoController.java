@@ -26,6 +26,20 @@ public class UserInfoController {
         return "users/userinfo/userInfo";
     }
 
+    //修改用户信息
+    @RequestMapping("/updateInfo")
+    public String updateInfo(Userinfo userinfo) {
+        userInfoService.updateInfo(userinfo);
+        return "redirect:userInfo";
+    }
+
+    //修改用户头像
+    @RequestMapping("/updateInfoImg")
+    public String updateInfoImg(String userimg, int userid) {
+        userInfoService.updateUserImg(userimg, userid);
+        return "redirect:userInfo";
+    }
+
 
 }
 

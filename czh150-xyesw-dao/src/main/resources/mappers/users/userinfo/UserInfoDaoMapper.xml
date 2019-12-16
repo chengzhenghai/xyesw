@@ -14,4 +14,14 @@
         select userinfoid, userid, usernumber, userimg, usershojian, userfajian, username from userinfo
     </select>
 
+    <!--修改用户信息-->
+    <update id="updateInfo">
+        update userinfo set username = #{username}, usernumber = #{usernumber}, usershojian = #{usershojian}, userfajian = #{userfajian} where userid = #{userid}
+    </update>
+
+    <!--修改用户头像-->
+    <update id="updateUserImg">
+        update userinfo set userimg = #{userimg} where userid = #{userid}
+    </update>
+
 </mapper>

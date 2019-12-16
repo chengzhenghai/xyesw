@@ -26,6 +26,15 @@ public class UserInfoServiceImpl implements UserInfoService {
         return dao.getInfoAll();
     }
 
+    @Override
+    public void updateInfo(Userinfo userinfo) {
+        dao.updateInfo(userinfo);
+    }
+
+    @Override
+    public void updateUserImg(String userimg, int userid) {
+        dao.updateUserImg(userimg, userid);
+    }
 
 
 }
