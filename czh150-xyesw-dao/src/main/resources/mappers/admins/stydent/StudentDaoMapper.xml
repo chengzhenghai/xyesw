@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.admins.student.StudentDao">
+    <!--查询所有学生信息-->
+    <select id="getStudentList" resultType="com.entity.user.Userinfo">
+        select A.userid, A.usernumber, A.userimg, A.usershojian, A.userfajian, A.username, B.useraccount, B.userstate from userinfo A,users B where A.userid = B.userid order by A.userid
+    </select>
+
+    <!--添加学生-->
+    <insert id="insertStudent">
+        insert into users(useraccount, userpass, userstate) values(#{useraccount},#{userpass},#{userstate})
+    </insert>
+
+    <!--添加学生信息-->
+    <insert id="insertStudentInfo">
+        insert into userinfo(userid, usernumber, userimg, usershojian, userfajian, username) values (#{userid},#{usernumber},#{userimg},#{usershojian},#{userfajian},#{username})
+    </insert>
+
+    <!--最新添加的商品id-->
+    <select id="getStudentId" resultType="int">
+        SELECT MAX(userid) from users
+    </select>
+
+    <!--修改用户状态-->
+    <update id="updateStudentState">
+        update users set userstate = #{userstate} where userid = #{userid}
+    </update>
+
+</mapper>

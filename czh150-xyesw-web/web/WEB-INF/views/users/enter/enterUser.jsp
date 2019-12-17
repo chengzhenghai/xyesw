@@ -15,7 +15,7 @@
             <form method="get" action="/enterUser">
                 <div class="form-group">
                     <label>账号：<span style="color: red;">${useraccount}</span></label>
-                    <input type="text" class="form-control" placeholder="请输入账号" name="useraccount" style="width: 300px;" value="1489572851">
+                    <input type="text" class="form-control" placeholder="请输入账号或学号" name="useraccount" style="width: 300px;" value="1489572851">
                 </div>
                 <div class="form-group">
                     <label>密码：<span style="color: red;">${userpass}</span></label>

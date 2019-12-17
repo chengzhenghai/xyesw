@@ -9,11 +9,11 @@ import javax.validation.constraints.Size;
 @Data
 public class Users {
     private Integer userid;//用户编号
-    @NotNull(message = "请输入账号")
-    @Size(max = 20, min = 6, message = "账号必须大于等于6位，小于等于20位")
+    @NotNull(message = "账号不能为空")
+    @Size(max = 20, min = 4, message = "必须大于等于4位，小于等于20位")
     private String useraccount;//用户账号
-    @NotNull(message = "请输入密码")
-    @Size(max = 20, min = 6, message = "密码必须大于等于6位，小于等于20位")
+    @NotNull(message = "密码不能为空")
+    @Size(max = 20, min = 6, message = "必须大于等于6位，小于等于20位")
     private String userpass;//用户密码
     private String userstate;//用户状态
 

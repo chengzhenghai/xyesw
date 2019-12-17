@@ -20,17 +20,13 @@ public class UserInfoServiceImpl implements UserInfoService {
         return dao.getInfo(userid);
     }
 
-    //查询所有用户信息
-    @Override
-    public List<Userinfo> getInfoAll() {
-        return dao.getInfoAll();
-    }
-
+    //修改用户信息
     @Override
     public void updateInfo(Userinfo userinfo) {
         dao.updateInfo(userinfo);
     }
 
+    //修改用户头像
     @Override
     public void updateUserImg(String userimg, int userid) {
         dao.updateUserImg(userimg, userid);

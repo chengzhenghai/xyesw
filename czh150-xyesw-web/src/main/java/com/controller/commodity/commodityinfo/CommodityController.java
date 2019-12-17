@@ -105,8 +105,14 @@ public class CommodityController {
 
     //跳转选择支付方式界面
     @RequestMapping("/commPayment")
-    public String commPayment() {
+    public String commPayment(int commid, int userid, Model model) {
+        //商品信息
+        Commodity commodity = commodityService.getCommodity(commid);
+        //商家信息
+        Userinfo info = userInfoService.getInfo(userid);
 
+        model.addAttribute("comm", commodity);
+        model.addAttribute("info", info);
         return "commodity/commoditydeal/commpayment";
     }
 

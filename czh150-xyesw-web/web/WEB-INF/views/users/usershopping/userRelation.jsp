@@ -23,7 +23,7 @@
                 ${commodity.commname}
             </div>
         </a>
-        <a href="/commPayment">
+        <a href="/commPayment?commid=${commodity.commid}&userid=${commodity.userid}">
             <button class="btn btn-primary" style="position: absolute; bottom: 0; right: 0">立即购买</button>
         </a>
     </div>

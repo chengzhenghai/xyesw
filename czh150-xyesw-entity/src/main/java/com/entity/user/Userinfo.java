@@ -13,6 +13,8 @@ public class Userinfo {
     private String userfajian;//发件地址
     private String username;//用户名称
     private String useraccount;//用户账号
+    private String userpass;//用户密码
+    private String userstate;//用户状态
 
     public Integer getUserinfoid() {
         return userinfoid;
@@ -77,4 +79,21 @@ public class Userinfo {
     public void setUseraccount(String useraccount) {
         this.useraccount = useraccount;
     }
+
+    public String getUserpass() {
+        return userpass;
+    }
+
+    public void setUserpass(String userpass) {
+        this.userpass = userpass;
+    }
+
+    public String getUserstate() {
+        return userstate;
+    }
+
+    public void setUserstate(String userstate) {
+        this.userstate = userstate;
+    }
+
 }

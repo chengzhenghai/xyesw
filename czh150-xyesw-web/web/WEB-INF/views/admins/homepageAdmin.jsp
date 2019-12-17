@@ -7,10 +7,100 @@
     <link href="/static/bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet"/>
     <link rel="stylesheet" href="/static/res/layui/css/layui.css"/>
     <script src="/static/res/layui/layui.js"></script>
+
+    <style>
+        a:hover{text-decoration:none}
+    </style>
+
 </head>
 <body>
-<h2>xyesw管理系统</h2>
-    <div>欢迎：${sessionScope.admin.adminname}</div>
-<a href="/exitAdmin">---退出---</a>
+
+<div class="layui-layout layui-layout-admin">
+    <div class="layui-header">
+        <div class="layui-logo">XYESW后台管理系统</div>
+        <ul class="layui-nav layui-layout-right">
+            <li class="layui-nav-item">
+                <a href="javascript:;" style="text-decoration:none;">
+                    欢迎管理员：${sessionScope.admin.adminname}
+                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a href="/exitAdmin" style="text-decoration:none;">退出</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="layui-side layui-bg-black">
+        <div class="layui-side-scroll">
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+                <li class="layui-nav-item layui-nav-itemed">
+                    <a class="" href="javascript:;">学生管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a href="javascript:;">商品管理</a>
+                </li>
+                <li class="layui-nav-item"><a href="">评论管理</a></li>
+                <li class="layui-nav-item"><a href="">发布公告</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="layui-body">
+
+    </div>
+
+    <div class="layui-footer">
+        <div id="div1"></div>
+    </div>
+</div>
+
+<script>
+    //所有学生的信息
+    function studentList() {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/studentList",
+        }).done(function (res) {
+            $(".layui-body").html(res);
+        })
+    }
+
+    // 页面加载时要做的事情
+    window.onload=function(){
+        studentList();
+
+        setInterval(function(){
+            fnDate();
+        },1000);
+    };
+</script>
+
+<script>
+    layui.use('element', function(){
+        var element = layui.element;
+    });
+</script>
+
+<script>
+    //js 获取当前时间
+    function fnDate(){
+        var oDiv=document.getElementById("div1");
+        var date=new Date();
+        var year=date.getFullYear();//当前年份
+        var month=date.getMonth();//当前月份
+        var data=date.getDate();//天
+        var hours=date.getHours();//小时
+        var minute=date.getMinutes();//分
+        var second=date.getSeconds();//秒
+        var time=year+"-"+fnW((month+1))+"-"+fnW(data)+" "+fnW(hours)+":"+fnW(minute)+":"+fnW(second);
+        oDiv.innerHTML=time;
+    }
+    //补位 当某个字段不是两位数时补0
+    function fnW(str){
+        var num;
+        str>10?num=str:num="0"+str;
+        return num;
+    }
+</script>
 </body>
 </html>
