@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <html>
 <head>
     <title>xyesw管理系统</title>
@@ -32,21 +33,28 @@
 
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                <li class="layui-nav-item layui-nav-itemed">
-                    <a class="" href="javascript:;">学生管理</a>
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <li class="layui-nav-item">
+                    <a href="/homepageAdmin" style="cursor:pointer;">主页</a>
                 </li>
                 <li class="layui-nav-item">
-                    <a href="javascript:;">商品管理</a>
+                    <a onclick="studentList()" style="cursor:pointer;">学生管理</a>
                 </li>
-                <li class="layui-nav-item"><a href="">评论管理</a></li>
-                <li class="layui-nav-item"><a href="">发布公告</a></li>
+                <li class="layui-nav-item">
+                    <a onclick="commodityList()" style="cursor:pointer;">商品管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a onclick="commentList()" style="cursor:pointer;">评论管理</a>
+                </li>
+                <li class="layui-nav-item">
+                    <a  style="cursor:pointer;">发布公告</a>
+                </li>
             </ul>
         </div>
     </div>
 
     <div class="layui-body">
-
+        <h1>XYESW后台管理系统</h1>
     </div>
 
     <div class="layui-footer">
@@ -64,10 +72,28 @@
             $(".layui-body").html(res);
         })
     }
+    //所有商品信息
+    function commodityList() {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/commodityList"
+        }).done(function (res) {
+            $(".layui-body").html(res);
+        })
+    }
+    //查询所有评论
+    function commentList() {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/commentList"
+        }).done(function (res) {
+            $(".layui-body").html(res);
+        })
+    }
 
     // 页面加载时要做的事情
     window.onload=function(){
-        studentList();
+        //studentList();
 
         setInterval(function(){
             fnDate();

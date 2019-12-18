@@ -10,9 +10,9 @@
 <div>
     <h2>管理员登入</h2>
     <form method="post" action="/enterAdmin">
-        账号：<input type="text" name="adminname"/><br>
+        账号：<input type="text" name="adminname" value="admin"/><br>
         <span style="color: red;">${adminname}</span><br>
-        密码：<input type="password" name="adminpass"/><br>
+        密码：<input type="password" name="adminpass" value="12345678"/><br>
         <span style="color: red;">${adminpass}</span><br>
         <span style="color: red;">${error}</span><br>
         <input type="submit" value="登入"/><br>

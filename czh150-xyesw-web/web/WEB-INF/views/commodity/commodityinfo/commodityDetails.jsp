@@ -66,10 +66,16 @@
                           style="resize:none; background: rgba(0, 0, 0, 0); margin-top: 20px; height: 250px"
                           readonly>${commodity.commdrief}</textarea>
             </div>
-            <div class="comm-details" style="margin-left: 30px;"><a
-                    href="/userRelation?commid=${commodity.commid}&userid=${userinfo.userid}">
-                <button type="button" class="btn btn-primary">我想要</button>
-            </a></div>
+            <c:if test="${userinfo.userstate == '封禁'}">
+                <button type="button" class="layui-btn layui-btn-danger">该账号已封禁</button>
+            </c:if>
+            <c:if test="${userinfo.userstate == '正常'}">
+                <div class="comm-details" style="margin-left: 30px;">
+                    <a href="/userRelation?commid=${commodity.commid}&userid=${userinfo.userid}">
+                        <button type="button" class="btn btn-primary">我想要</button>
+                    </a>
+                </div>
+            </c:if>
         </c:if>
     </div>
 </div>

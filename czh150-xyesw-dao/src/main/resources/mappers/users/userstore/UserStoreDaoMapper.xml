@@ -5,7 +5,7 @@
 <mapper namespace="com.dao.users.userstore.UserStoreDao">
     <!-- 查询所有我的商品 -->
     <select id="getMyCommodity" resultType="com.entity.commodity.Commodity">
-        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity where userid = #{userid} order by commid desc
+        select commid, commname, commmoney, userid, commdrief, commimgpath, commstate from commodity where userid = #{userid} order by commid desc
     </select>
 
     <!-- 删除商品图片 -->

@@ -55,7 +55,7 @@ public class CommodityOperationController {
         Commodity commodity = commodityService.getCommodity(commid);
         //商品图片
         List<CommodityImg> commodityImg = commodityService.getCommodityImg(commid);
-        //用户信息
+        //商品用户信息
         int userid = commodity.getUserid();
         Userinfo info = userInfoService.getInfo(userid);
         //商品评论

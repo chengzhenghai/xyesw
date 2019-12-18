@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.admins.admincomm.AdminCommDao">
+    <!--查询所有商品+用户信息-->
+    <select id="commodityList" resultType="com.entity.commodity.Commodity">
+        select A.commid, A.commname, A.commmoney, A.userid, A.commdrief, A.commimgpath, A.commstate, B.username from commodity A,userinfo B where A.userid = B.userid order by commid desc
+    </select>
+
+    <!--查询商品商品评论-->
+    <select id="commentList" resultType="com.entity.user.Comment">
+        select commentid, userid, commid, commtext, commdate from comment order by commentid desc
+    </select>
+
+</mapper>

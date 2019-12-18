@@ -6,7 +6,7 @@
 
     <!-- 查询所有商品信息 -->
     <select id="getCommodityAll" resultType="com.entity.commodity.Commodity">
-        select commid, commname, commmoney, userid, commdrief, commimgpath from commodity order by commid desc
+        select commid, commname, commmoney, userid, commdrief, commimgpath, commstate from commodity order by commid desc
     </select>
 
     <!-- 查询单个商品 -->

@@ -14,6 +14,9 @@ public class Commodity {
     private Integer userid;//商品所有者编号（外键）
     private String commdrief;//商品简介
     private String commimgpath;//商品图片
+    private String commstate;//商品状态
+
+    private String username;
 
     public Integer getCommid() {
         return commid;
@@ -61,5 +64,21 @@ public class Commodity {
 
     public void setCommimgpath(String commimgpath) {
         this.commimgpath = commimgpath;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getCommstate() {
+        return commstate;
+    }
+
+    public void setCommstate(String commstate) {
+        this.commstate = commstate;
     }
 }

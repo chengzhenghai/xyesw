@@ -16,7 +16,7 @@
 <h3 style="margin-left: 30px; margin-top: 20px">支付详情</h3>
 <hr>
 
-<div style="border: 1px solid black; width: 600px; height: 350px; margin: auto;">
+<div style="border: 1px solid yellow; width: 600px; height: 350px; margin: auto;">
     <form>
         <div class="form-group">
             <label>商品名称：${comm.commname}</label>

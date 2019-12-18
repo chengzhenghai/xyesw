@@ -38,8 +38,6 @@ public class UserStoreController {
     private UserInfoService userInfoService;
     @Autowired
     private CommTypesService commTypesService;
-    @Autowired
-    private CommodityService commodityService;
 
     //我的店铺
     @RequestMapping("/userStore")

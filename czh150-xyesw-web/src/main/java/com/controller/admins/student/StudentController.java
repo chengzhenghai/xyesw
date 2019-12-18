@@ -1,4 +1,4 @@
-package com.controller.admins;
+package com.controller.admins.student;
 
 import com.entity.user.Userinfo;
 import com.github.pagehelper.PageInfo;
@@ -45,16 +45,15 @@ public class StudentController {
         userinfo.setUserid(studentService.getStudentId());//用户id
         userinfo.setUserimg("/static/system-img/yonghutoxiang.jpg");//头像默认
         studentService.insertStudentInfo(userinfo);
-        return "redirect:homepageAdmin";
+        return "redirect:studentList";
     }
 
     //修改学生状态
     @RequestMapping("/updateStudentState")
     public String updateStudentState(int userid, String userstate) {
         studentService.updateStudentState(userid, userstate);
-        return "redirect:homepageAdmin";
+        return "redirect:studentList";
     }
-
 
 
 }

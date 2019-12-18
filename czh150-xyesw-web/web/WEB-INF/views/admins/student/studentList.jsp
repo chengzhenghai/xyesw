@@ -17,27 +17,41 @@
         <th>修改状态</th>
     </tr>
     <c:forEach items="${student.list}" var="s">
-        <tr>
-            <td>${s.userid}</td>
-            <td><img src="${s.userimg}" style="width: 50px; height: 50px"></td>
-            <td>${s.username}</td>
-            <td>${s.usernumber}</td>
-            <td>${s.usershojian}</td>
-            <td>${s.userfajian}</td>
-            <td>${s.userstate}</td>
-            <td>
-                <c:if test="${s.userstate == '正常'}">
+        <c:if test="${s.userstate == '正常'}">
+            <tr>
+                <td>${s.userid}</td>
+                <td><img src="${s.userimg}" style="width: 50px; height: 50px"></td>
+                <td>${s.username}</td>
+                <td>${s.usernumber}</td>
+                <td>${s.usershojian}</td>
+                <td>${s.userfajian}</td>
+                <td>${s.userstate}</td>
+                <td>
                     <a href="" style="text-decoration:none;">
-                        <button type="button" class="layui-btn layui-btn-danger" state="封禁" id="${s.userid}">封禁账号</button>
+                        <button type="button" class="layui-btn layui-btn-danger" state="封禁" id="${s.userid}">封禁账号
+                        </button>
                     </a>
-                </c:if>
-                <c:if test="${s.userstate == '封禁'}">
+                </td>
+            </tr>
+        </c:if>
+    </c:forEach>
+    <c:forEach items="${student.list}" var="s">
+        <c:if test="${s.userstate == '封禁'}">
+            <tr>
+                <td>${s.userid}</td>
+                <td><img src="${s.userimg}" style="width: 50px; height: 50px"></td>
+                <td>${s.username}</td>
+                <td>${s.usernumber}</td>
+                <td>${s.usershojian}</td>
+                <td>${s.userfajian}</td>
+                <td>${s.userstate}</td>
+                <td>
                     <a href="" style="text-decoration:none;">
                         <button type="button" class="layui-btn" state="正常" id="${s.userid}">解除封禁</button>
                     </a>
-                </c:if>
-            </td>
-        </tr>
+                </td>
+            </tr>
+        </c:if>
     </c:forEach>
 </table>
 
