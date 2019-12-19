@@ -18,9 +18,14 @@ public class CommentServiceImpl implements CommentService {
     public List<Comment> getCommentAll(int pageNum, int pageSize, int commid) {
         return dao.getCommentAll(pageNum, pageSize, commid);
     }
-
+    //添加评论
     @Override
     public void insertComment(Comment comment) {
         dao.insertComment(comment);
+    }
+    //删除评论
+    @Override
+    public void deleteComment(int commid) {
+        dao.deleteComment(commid);
     }
 }

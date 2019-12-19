@@ -6,6 +6,7 @@ import com.entity.commodity.CommodityImg;
 import com.service.users.userstore.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,6 +23,7 @@ public class UserStoreServiceImpl implements UserStoreService {
 
     //删除商品图片
     @Override
+
     public void deleteCommodityImg(int commimg) {
         dao.deleteCommodityImg(commimg);
     }

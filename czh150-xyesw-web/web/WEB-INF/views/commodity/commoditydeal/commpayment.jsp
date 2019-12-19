@@ -39,11 +39,8 @@
 </div>
 <div style="border: 1px solid yellow; width: 600px; height: 200px; margin: auto;">
     <div style="float: left; width: 250px; height: auto; margin-top: 10px; margin-left: 20px;">
-        <label>配送方式：</label>
-        <select class="form-control" id="Select1">
-            <option value="1">配送</option>
-            <option value="2">自取</option>
-        </select>
+        <label>配送费：</label>
+        <input type="text" class="form-control" value="￥2" readonly>
 
         <label>发件地址：</label>
         <input type="text" class="form-control" value="${info.userfajian}" readonly>
@@ -56,24 +53,14 @@
         <input type="text" class="form-control" id="money" value="${comm.commmoney + 2}" readonly>
     </div>
     <div style="float: left; width: 220px; height: 100px; margin-left: 100px; margin-top: 20px;">
-        <a href=""><img src="/static/system-img/zhifubao.png" title="微信" style="width: 100px; height: 100px;"></a>
-        <a href=""><img src="/static/system-img/weixin.jpg" title="支付宝" style="width: 100px; height: 100px;"></a>
+        <a href="/weixin?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
+            <img src="/static/system-img/weixin.jpg" title="支付宝" style="width: 100px; height: 100px;">
+        </a>
+        <a href="/zhufubao?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
+            <img src="/static/system-img/zhifubao.png" title="微信" style="width: 100px; height: 100px;">
+        </a>
     </div>
 </div>
-
-<script>
-    $("#Select1").change(function () {
-        var comm = document.getElementById("Commodity").innerHTML;
-        var id = $("#Select1").val();
-        var money = 0;
-        if(id === '1') {
-            money = parseInt(comm.trim()) + 2;
-        }else if(id === '2') {
-            money = comm;
-        }
-        $("#money").val(money);
-    });
-</script>
 
 </body>
 </html>

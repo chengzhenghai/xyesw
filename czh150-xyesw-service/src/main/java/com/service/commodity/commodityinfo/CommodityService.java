@@ -22,5 +22,9 @@ public interface CommodityService {
     //查询所有商品图片
     List<CommodityImg> getCommodityImg(int commid);
 
+    //修改商品状态
+    void updateCommState(@Param("commid") int commid, @Param("commstate") String commstate);
+
+
 }
 

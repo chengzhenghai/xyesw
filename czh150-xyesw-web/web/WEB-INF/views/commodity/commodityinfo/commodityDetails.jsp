@@ -47,18 +47,22 @@
                 <span style="font-size: 20px">商&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家：</span>
                 <span style="color: red; font-size: 20px"><a href="/userStore">${userinfo.username}</a></span>
             </div>
-            <div class="comm-details"><span style="font-size: 20px">商品简介：</span><textarea
-                    style="width: 340px; height: 250px; margin-top: 10px; font-size: 20px">${commodity.commdrief}</textarea>
+            <div class="comm-details">
+                <span style="font-size: 20px">商品简介：</span>
+                <textarea style="width: 340px; height: 250px; margin-top: 10px; font-size: 20px">${commodity.commdrief}</textarea>
             </div>
-            <div class="comm-details" style="margin-left: 30px;"><a href="/userStore">
-                <button type="button" class="btn btn-primary">我的商品</button>
-            </a></div>
+            <div class="comm-details" style="margin-left: 30px;">
+                <a href="/userStore">
+                    <button type="button" class="btn btn-primary">我的商品</button>
+                </a>
+            </div>
         </c:if>
         <c:if test="${sessionScope.users.userid != userinfo.userid}">
             <div class="comm-details">
                 <span style="font-size: 20px">商&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;家：</span>
-                <span style="color: red; font-size: 20px"><a
-                        href="/elseUserStores?userid=${userinfo.userid}">${userinfo.username}</a></span>
+                <span style="color: red; font-size: 20px">
+                    <a href="/elseUserStores?userid=${userinfo.userid}">${userinfo.username}</a>
+                </span>
             </div>
             <div class="comm-details">
                 <label style="font-size: 20px;">商品简介：</label>
@@ -70,11 +74,16 @@
                 <button type="button" class="layui-btn layui-btn-danger">该账号已封禁</button>
             </c:if>
             <c:if test="${userinfo.userstate == '正常'}">
-                <div class="comm-details" style="margin-left: 30px;">
-                    <a href="/userRelation?commid=${commodity.commid}&userid=${userinfo.userid}">
-                        <button type="button" class="btn btn-primary">我想要</button>
-                    </a>
-                </div>
+                <c:if test="${commodity.commstate == '在售中'}">
+                    <div class="comm-details" style="margin-left: 30px;">
+                        <a href="/userRelation?commid=${commodity.commid}&userid=${userinfo.userid}">
+                            <button type="button" class="btn btn-primary">我想要</button>
+                        </a>
+                    </div>
+                </c:if>
+                <c:if test="${commodity.commstate == '已出售'}">
+                    <button type="button" class="layui-btn layui-btn-danger">已出售</button>
+                </c:if>
             </c:if>
         </c:if>
     </div>

@@ -43,8 +43,7 @@
                             readonly="readonly">${mycomm.commdrief}</textarea></td>
                     <td><img style="max-width: 200px; height: 100px" src="${mycomm.commimgpath}"/></td>
                     <td>
-                        <a style="text-decoration:none;" href="/deleteMyComm?commid=${mycomm.commid}"
-                           onClick="return confirm('确定要删除吗？');">
+                        <a style="text-decoration:none;" href="/deleteMyComm?commid=${mycomm.commid}" onClick="return confirm('确定要删除吗？');">
                             <button type="button" class="btn btn-danger">删除</button>
                         </a>&nbsp;
                         <a style="text-decoration:none;" href="/updateComm?commid=${mycomm.commid}">
@@ -100,10 +99,10 @@
                             readonly="readonly">${mycomm.commdrief}</textarea></td>
                     <td><img style="max-width: 200px; height: 100px" src="${mycomm.commimgpath}"/></td>
                     <td>
-                        <a style="text-decoration:none;" href="/deleteMyComm?commid=${mycomm.commid}"
-                           onClick="return confirm('确定要删除吗？');">
-                            <button type="button" class="btn btn-danger">删除</button>
-                        </a>&nbsp;
+                        <a style="text-decoration:none;" href=""
+                           onClick="return confirm('确定要重新上架吗？');">
+                            <button type="button" class="btn btn-danger">重新上架</button>
+                        </a>
                     </td>
                 </tr>
             </c:if>

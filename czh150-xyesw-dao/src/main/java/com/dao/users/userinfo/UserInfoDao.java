@@ -1,6 +1,7 @@
 package com.dao.users.userinfo;
 
 import com.entity.user.Userinfo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface UserInfoDao {
     void updateInfo(Userinfo userinfo);
 
     //修改用户头像
-    void updateUserImg(String userimg, int userid);
+    void updateUserImg(@Param("userimg") String userimg,@Param("userid") int userid);
 }

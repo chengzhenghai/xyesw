@@ -17,9 +17,11 @@
 
 <div style="border: 1px solid yellow; width: 800px; height: 500px; margin: auto">
     <div style="margin-top: 50px; margin-left: 50px; float: left;">
-        <form action="/updateCommImg" method="post" enctype="multipart/form-data">
+        <form action="/updateInfoImg" method="post" enctype="multipart/form-data">
             <input type="hidden" name="userid" value="${info.userid}" readonly="readonly">
-            <img src="${info.userimg}" style="width: 300px; height: 300px; border-radius:50%; "/>
+            <input type="file" name="userimg" id="exampleFormControlFile5">
+            <img src="${info.userimg}" style="width: 250px; height: 250px; border-radius:50%;" id="exampleFormControlFile6"/>
+            <button type="submit" class="btn btn-primary">提交</button>
         </form>
     </div>
     <div style="float: right; width: 400px; margin-top: 20px;">
@@ -30,7 +32,8 @@
             </div>
             <div class="form-group">
                 <label>账号：</label>
-                <input type="text" class="form-control" name="useraccount" value="${info.useraccount}" readonly="readonly">
+                <input type="text" class="form-control" name="useraccount" value="${info.useraccount}"
+                       readonly="readonly">
             </div>
             <div class="form-group">
                 <label>用户名：</label>
@@ -58,6 +61,22 @@
     layui.use('element', function () {
         var $ = layui.jquery
             , element = layui.element;
+    });
+</script>
+
+<script>
+    //显示图片
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#exampleFormControlFile6').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $("#exampleFormControlFile5").change(function () {
+        readURL(this);
     });
 </script>
 

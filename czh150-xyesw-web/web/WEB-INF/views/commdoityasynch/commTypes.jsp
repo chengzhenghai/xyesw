@@ -4,23 +4,26 @@
 <c:if test="${commstype != ''}">
     <c:forEach items="${commstype.list}" var="comm">
         <a href="/commodityDetails?commid=${comm.commid}">
-            <c:if test="${comm.userid == sessionScope.users.userid}">
-                <div class="my-comm" style="border: 1px solid red; float: left; margin-left: 20px; margin-top: 20px; width: 220px; border-radius:10px 10px;">
-                    <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
-                        <img style="max-width: 200px; height: 200px;" src="${comm.commimgpath}"/>
+            <c:if test="${comm.commstate == '在售中'}">
+                <c:if test="${comm.userid == sessionScope.users.userid}">
+                    <div class="my-comm"
+                         style="border: 1px solid red; float: left; margin-left: 20px; margin-top: 20px; width: 220px; border-radius:10px 10px;">
+                        <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
+                            <img style="max-width: 200px; height: 200px;" src="${comm.commimgpath}"/>
+                        </div>
+                        <div style="margin-left: 10px">${comm.commname}</div>
+                        <div style="margin-left: 10px">￥ ${comm.commmoney}</div>
                     </div>
-                    <div style="margin-left: 10px">${comm.commname}</div>
-                    <div style="margin-left: 10px">￥ ${comm.commmoney}</div>
-                </div>
-            </c:if>
-            <c:if test="${comm.userid != sessionScope.users.userid}">
-                <div style="border: 1px solid greenyellow; float: left; margin-left: 20px; margin-top: 20px; width: 220px; border-radius:10px 10px;">
-                    <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
-                        <img style="max-width: 200px; height: 200px;" src="${comm.commimgpath}"/>
+                </c:if>
+                <c:if test="${comm.userid != sessionScope.users.userid}">
+                    <div style="border: 1px solid greenyellow; float: left; margin-left: 20px; margin-top: 20px; width: 220px; border-radius:10px 10px;">
+                        <div style="width: auto; height: auto; text-align: center; margin-top: 10px">
+                            <img style="max-width: 200px; height: 200px;" src="${comm.commimgpath}"/>
+                        </div>
+                        <div style="margin-left: 10px">${comm.commname}</div>
+                        <div style="margin-left: 10px">￥ ${comm.commmoney}</div>
                     </div>
-                    <div style="margin-left: 10px">${comm.commname}</div>
-                    <div style="margin-left: 10px">￥ ${comm.commmoney}</div>
-                </div>
+                </c:if>
             </c:if>
         </a>
     </c:forEach>

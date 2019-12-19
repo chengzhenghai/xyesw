@@ -44,4 +44,10 @@ public class CommodityServiceImpl implements CommodityService {
         return dao.getCommodityImg(commid);
     }
 
+    //修改商品状态
+    @Override
+    public void updateCommState(int commid, String commstate) {
+        dao.updateCommState(commid, commstate);
+    }
+
 }

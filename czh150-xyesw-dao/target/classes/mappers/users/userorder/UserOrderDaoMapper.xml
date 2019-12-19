@@ -4,5 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.dao.users.userorder.UserOrderDao">
 
+    <!--查询用户所有订单-->
+    <select id="getCommOrderAll" resultType="com.entity.order.Commorder">
+        select A.orderid, A.orderdate, A.userid, A.userids, A.commid, A.ordertotal, A.orderstate, B.username, C.commname from commorder A,userinfo B,commodity C where A.userid = B.userid and A.commid = C.commid and A.userid = #{userid} and orderstate = #{orderstate}
+    </select>
 
+    <!--查询用户所有出售中的商品-->
+    <select id="getCommAll" resultType="com.entity.order.Commorder">
+        select A.orderid, A.orderdate, A.userid, A.userids, A.commid, A.ordertotal, A.orderstate, B.commname from commorder A, commodity B where A.userids = #{userid} and orderstate != '在售中' and A.commid = B.commid and orderstate = #{orderstate}
+    </select>
+
+    <!--修改订单状态-->
+    <update id="updateOrderstate">
+        update commorder set orderstate = #{orderstate} , orderdate = #{orderdate} where orderid = #{orderid}
+    </update>
+
+    <!--删除订单-->
+    <delete id="deleteOrder">
+        delete from commorder where orderid = #{orderid}
+    </delete>
+
+    <!--添加订单-->
+    <insert id="insertOrder">
+        insert into commorder(orderid, orderdate, userid, userids, commid, ordertotal, orderstate)
+        values (#{orderid},#{orderdate},#{userid},#{userids},#{commid},#{ordertotal},#{orderstate})
+    </insert>
 </mapper>

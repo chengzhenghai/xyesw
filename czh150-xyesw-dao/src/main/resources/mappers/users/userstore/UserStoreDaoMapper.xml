@@ -10,7 +10,7 @@
 
     <!-- 删除商品图片 -->
     <delete id="deleteCommodityImg">
-        delete from commodityimg where commimg = #{commimg}
+        delete from commodityimg where commid = #{commimg}
     </delete>
 
     <!-- 修改图片 -->

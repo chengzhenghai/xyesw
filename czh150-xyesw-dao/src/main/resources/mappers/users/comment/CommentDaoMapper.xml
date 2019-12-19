@@ -11,5 +11,9 @@
     <insert id="insertComment">
         insert into comment(userid, commid, commtext, commdate) values (#{userid},#{commid},#{commtext},#{commdate})
     </insert>
+    <!--删除评论-->
+    <delete id="deleteComment">
+        delete from comment where commid = #{commid}
+    </delete>
 
 </mapper>

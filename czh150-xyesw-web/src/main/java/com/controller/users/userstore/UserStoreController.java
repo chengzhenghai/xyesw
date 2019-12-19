@@ -7,6 +7,7 @@ import com.entity.user.Users;
 import com.github.pagehelper.PageInfo;
 import com.service.commodity.commodityinfo.CommodityService;
 import com.service.commodity.commoditytype.CommTypesService;
+import com.service.users.comment.CommentService;
 import com.service.users.userinfo.UserInfoService;
 import com.service.users.userstore.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,15 +30,16 @@ import java.util.UUID;
 public class UserStoreController {
     //上传图片路径
     public static final String FILE_DIRECTORY = "/static/commodity-img";
-    //uuid
-    public static String uuid = UUID.randomUUID().toString();
-
     @Autowired
     private UserStoreService userStoreService;
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
     private CommTypesService commTypesService;
+    @Autowired
+    private CommentService commentService;
+    @Autowired
+    private CommodityService commodityService;
 
     //我的店铺
     @RequestMapping("/userStore")
@@ -74,7 +76,7 @@ public class UserStoreController {
     @Transactional
     public String insertMyComm(Commodity commodity, MultipartFile img, int typesid) {
         String filename = img.getOriginalFilename();
-        String path = FILE_DIRECTORY + File.separator + uuid + filename;
+        String path = FILE_DIRECTORY + File.separator + UUID.randomUUID().toString() + filename;
         File file = new File(path);
         try {
             img.transferTo(file);
@@ -99,6 +101,8 @@ public class UserStoreController {
         userStoreService.deleteCommodityImg(commid);
         //删除商品分类
         commTypesService.deleteCommtype(commid);
+        //删除商品评论
+        commentService.deleteComment(commid);
         //删除商品
         userStoreService.deleteMyComm(commid);
         return "redirect:userStore";
@@ -106,10 +110,9 @@ public class UserStoreController {
 
     //修改商品
     @PostMapping("/updateMyComm")
-    @Transactional
     public String updateMyComm(Commodity commodity, MultipartFile img, int typesid) {
         String filename = img.getOriginalFilename();
-        String path = FILE_DIRECTORY + File.separator + uuid + filename;
+        String path = FILE_DIRECTORY + File.separator + UUID.randomUUID().toString() + filename;
         if ("".equals(filename)) {
             //图片为空则不修改
         } else {
@@ -143,7 +146,7 @@ public class UserStoreController {
         if ("".equals(filename)) {
             session.setAttribute("commimgpath", "请选择图片！");
         } else {
-            String path = FILE_DIRECTORY + File.separator + uuid + filename;
+            String path = FILE_DIRECTORY + File.separator + UUID.randomUUID().toString() + filename;
             File files = new File(path);
             try {
                 commimgpath.transferTo(files);
@@ -159,9 +162,9 @@ public class UserStoreController {
 
     //修改商品图片
     @RequestMapping("/updateCommImg")
-    public String updateCommImg(MultipartFile commimgpath, int commimg, int commid, HttpSession session) {
+    public String updateCommImg(MultipartFile commimgpath, int commimg, int commid) {
         String filename = commimgpath.getOriginalFilename();
-        String path = FILE_DIRECTORY + File.separator + uuid + filename;
+        String path = FILE_DIRECTORY + File.separator + UUID.randomUUID().toString() + filename;
         if ("".equals(filename)) {
 
         } else {
@@ -174,6 +177,13 @@ public class UserStoreController {
             userStoreService.updateCommodityImg(path, commimg);
         }
         return "redirect:commImgs?commid=" + commid;
+    }
+
+    //修改商品状态：上架
+    @RequestMapping("/updateCommState")
+    public String updateCommState(int commid, String commstate) {
+        commodityService.updateCommState(commid, commstate);
+        return "";
     }
 
 }

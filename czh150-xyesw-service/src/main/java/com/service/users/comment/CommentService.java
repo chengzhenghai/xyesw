@@ -10,4 +10,7 @@ public interface CommentService {
 
     //添加评论
     void insertComment(Comment comment);
+
+    //删除评论
+    void deleteComment(int commid);
 }

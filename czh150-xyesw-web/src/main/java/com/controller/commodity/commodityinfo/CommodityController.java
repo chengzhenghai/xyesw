@@ -3,6 +3,7 @@ package com.controller.commodity.commodityinfo;
 import com.entity.commodity.Commodity;
 import com.entity.commodity.CommodityImg;
 import com.entity.commodity.Types;
+import com.entity.order.Commorder;
 import com.entity.user.Userinfo;
 import com.entity.user.Users;
 import com.github.pagehelper.PageInfo;
@@ -17,17 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.UUID;
 
 //商品相关，页面跳转相关
 @Controller
 public class CommodityController {
-
     @Autowired
     private CommodityService commodityService;
-
     @Autowired
     private CommTypesService commTypesService;
-
     @Autowired
     private UserInfoService userInfoService;
 
@@ -114,6 +113,20 @@ public class CommodityController {
         model.addAttribute("comm", commodity);
         model.addAttribute("info", info);
         return "commodity/commoditydeal/commpayment";
+    }
+
+    //微信支付
+    @RequestMapping("/weixin")
+    public String weixin(Commorder commorder, Model model) {
+        model.addAttribute("order", commorder);
+        return "commodity/commoditydeal/weixin";
+    }
+
+    //支付宝支付
+    @RequestMapping("/zhufubao")
+    public String zhifubao(Commorder commorder, Model model) {
+        model.addAttribute("order", commorder);
+        return "commodity/commoditydeal/zhifubao";
     }
 
 

@@ -11,5 +11,7 @@ public interface CommentDao {
     List<Comment> getCommentAll(@Param("pageNum") int pageNum, @Param("pageSize") int pageSize, @Param("commid") int commid);
     //添加评论
     void insertComment(Comment comment);
+    //删除评论
+    void deleteComment(int commid);
 
 }

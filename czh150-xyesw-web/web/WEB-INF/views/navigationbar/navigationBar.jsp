@@ -7,7 +7,8 @@
         <ul class="layui-nav layui-layout-left">
             <li class="layui-nav-item"><a href="/homepage" style="text-decoration:none;">首页</a></li>
             <li class="layui-nav-item"><a href="/userStore" style="text-decoration:none;">我的店铺</a></li>
-            <li class="layui-nav-item"><a href="/userOrder" style="text-decoration:none;">我的订单</a></li>
+            <li class="layui-nav-item"><a href="/userOrder" style="text-decoration:none;">我的购买</a></li>
+            <li class="layui-nav-item"><a href="/userCommOrder" style="text-decoration:none;">我的出售</a></li>
             <li class="layui-nav-item"><a href="/userInfo" style="text-decoration:none;">我的信息</a></li>
         </ul>
         <form method="get" action="/getCommodityName">
