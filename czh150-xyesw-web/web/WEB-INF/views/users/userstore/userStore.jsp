@@ -13,7 +13,7 @@
 
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
-<h3 style="margin-left: 30px; margin-top: 20px">我的店铺：在售商品</h3>
+<h3 style="margin-left: 30px; margin-top: 20px">我的店铺：在售商品：${zaishozhong}</h3>
 <hr>
 
 <a href="/insertComm" style="text-decoration:none;">
@@ -99,8 +99,8 @@
                             readonly="readonly">${mycomm.commdrief}</textarea></td>
                     <td><img style="max-width: 200px; height: 100px" src="${mycomm.commimgpath}"/></td>
                     <td>
-                        <a style="text-decoration:none;" href=""
-                           onClick="return confirm('确定要重新上架吗？');">
+                        <p style="color: red;">${sessionScope.commState}</p>
+                        <a style="text-decoration:none;" href="/updateCommState?commid=${mycomm.commid}" onClick="return confirm('确定要重新上架吗？');">
                             <button type="button" class="btn btn-danger">重新上架</button>
                         </a>
                     </td>

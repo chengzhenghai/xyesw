@@ -16,7 +16,7 @@
             <input type="text" class="form-control" placeholder="请输入手机号" name="usernumber">
         </div>
         <button type="submit" class="btn btn-primary" style="margin-top: 50px; margin-left: 200px;">添加</button>
-        <a href="/homepageAdmin">
+        <a href="/studentList">
             <button class="btn btn-primary" type="button" style="margin-top: 50px; margin-left: 100px;">取消</button>
         </a>
     </form>

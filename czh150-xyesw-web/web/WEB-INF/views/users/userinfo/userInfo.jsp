@@ -9,18 +9,17 @@
     <script src="/static/res/layui/layui.js"></script>
 </head>
 <body>
-
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
 <h3 style="margin-left: 30px; margin-top: 20px">我的信息</h3>
 <hr>
 
-<div style="border: 1px solid yellow; width: 800px; height: 500px; margin: auto">
-    <div style="margin-top: 50px; margin-left: 50px; float: left;">
+<div style="border: 1px solid yellow; width: 800px; height: 500px; margin: auto" class="user-info">
+    <div style="margin-top: 50px; margin-left: 50px; float: left; width: 300px; text-align: center;">
         <form action="/updateInfoImg" method="post" enctype="multipart/form-data">
             <input type="hidden" name="userid" value="${info.userid}" readonly="readonly">
-            <input type="file" name="userimg" id="exampleFormControlFile5">
-            <img src="${info.userimg}" style="width: 250px; height: 250px; border-radius:50%;" id="exampleFormControlFile6"/>
+            <input type="file" name="userimg" id="exampleFormControlFile5" style="display:none">
+            <img src="${info.userimg}" style="width: 250px; height: 250px; border-radius:50%;" id="exampleFormControlFile6" onclick="F_Open_dialog()"/>
             <button type="submit" class="btn btn-primary">提交</button>
         </form>
     </div>
@@ -52,7 +51,9 @@
                 <input type="text" class="form-control" name="userfajian" value="${info.userfajian}">
             </div>
             <button type="submit" style="margin-left: 100px" class="btn btn-primary">修改信息</button>
+            <button type="button" id="skipPass" user-id="${info.userid}" style="margin-left: 100px" class="btn btn-primary">修改密码</button>
         </form>
+
     </div>
 </div>
 
@@ -61,6 +62,20 @@
     layui.use('element', function () {
         var $ = layui.jquery
             , element = layui.element;
+    });
+</script>
+
+<script>
+    $("#skipPass").click(function () {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/updateSkipPass",
+            data: {
+                userid: $(this).attr("user-id")
+            }
+        }).done(function (res) {
+            $(".user-info").html(res);
+        })
     });
 </script>
 
@@ -78,6 +93,13 @@
     $("#exampleFormControlFile5").change(function () {
         readURL(this);
     });
+</script>
+
+<script type="text/javascript">
+    function F_Open_dialog()
+    {
+        document.getElementById("exampleFormControlFile5").click();
+    }
 </script>
 
 </body>

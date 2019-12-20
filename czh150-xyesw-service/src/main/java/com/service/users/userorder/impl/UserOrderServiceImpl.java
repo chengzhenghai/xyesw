@@ -18,11 +18,24 @@ public class UserOrderServiceImpl implements UserOrderService {
     public List<Commorder> getCommOrderAll(int userid, String orderstate) {
         return dao.getCommOrderAll(userid, orderstate);
     }
+
+    //查询有多少订单
+    @Override
+    public int orders(int userid, String orderstate) {
+        return dao.orders(userid, orderstate);
+    }
+
     //查询用户所有出售的商品
     @Override
     public List<Commorder> getCommAll(int userid, String orderstate) {
         return dao.getCommAll(userid, orderstate);
     }
+    //查询用户买出多少商品
+    @Override
+    public int ordersComm(int userid, String orderstate) {
+        return dao.ordersComm(userid, orderstate);
+    }
+
     //修改订单状态
     @Override
     public void updateOrderstate(Commorder commorder) {
@@ -39,5 +52,16 @@ public class UserOrderServiceImpl implements UserOrderService {
     @Override
     public void insertOrder(Commorder commorder) {
         dao.insertOrder(commorder);
+    }
+
+    //通过商品id查询商品状态
+    @Override
+    public int orderState(int commid, String orderstate) {
+        return dao.orderState(commid, orderstate);
+    }
+
+    @Override
+    public void deleteCommOrder(int commid) {
+        dao.deleteCommOrder(commid);
     }
 }

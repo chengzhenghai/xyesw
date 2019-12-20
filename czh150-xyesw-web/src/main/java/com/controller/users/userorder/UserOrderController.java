@@ -29,12 +29,18 @@ public class UserOrderController {
         //已支付订单
         List<Commorder> commOrderAll1 = userOrderService.getCommOrderAll(users.getUserid(), "已支付");
         model.addAttribute("orderList", commOrderAll1);
+        int orders1 = userOrderService.orders(users.getUserid(), "已支付");
+        model.addAttribute("orders1", orders1);
         //已发货订单
         List<Commorder> commOrderAll2 = userOrderService.getCommOrderAll(users.getUserid(), "已发货");
         model.addAttribute("orderDeliverList", commOrderAll2);
+        int orders2 = userOrderService.orders(users.getUserid(), "已发货");
+        model.addAttribute("orders2", orders2);
         //已完成订单
         List<Commorder> commOrderAll = userOrderService.getCommOrderAll(users.getUserid(), "已完成");
         model.addAttribute("orderAccomplishList", commOrderAll);
+        int orders3 = userOrderService.orders(users.getUserid(), "已完成");
+        model.addAttribute("orders3", orders3);
         return "users/userorder/userOrder";
     }
 
@@ -61,12 +67,18 @@ public class UserOrderController {
         //已支付的订单
         List<Commorder> commAll1 = userOrderService.getCommAll(users.getUserid(), "已支付");
         model.addAttribute("commList1", commAll1);
+        int orders1 = userOrderService.ordersComm(users.getUserid(), "已支付");
+        model.addAttribute("orders1", orders1);
         //已发货的订单
         List<Commorder> commAll2 = userOrderService.getCommAll(users.getUserid(), "已发货");
         model.addAttribute("commList2", commAll2);
+        int orders2 = userOrderService.ordersComm(users.getUserid(), "已发货");
+        model.addAttribute("orders2", orders2);
         //已完成的订单
         List<Commorder> commAll3 = userOrderService.getCommAll(users.getUserid(), "已完成");
         model.addAttribute("commList3", commAll3);
+        int orders3 = userOrderService.ordersComm(users.getUserid(), "已完成");
+        model.addAttribute("orders3", orders3);
         return "users/userorder/userCommOrder";
     }
 

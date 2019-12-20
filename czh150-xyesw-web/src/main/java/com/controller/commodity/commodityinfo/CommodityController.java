@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.UUID;
 
 //商品相关，页面跳转相关
 @Controller

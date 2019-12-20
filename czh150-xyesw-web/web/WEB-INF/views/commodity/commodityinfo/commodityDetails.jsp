@@ -27,12 +27,12 @@
 <div style="border: 1px solid yellow; width: 1000px; height: 550px; margin: auto">
     <div style="border: 1px solid salmon; width: 550px; height: 500px; float: left; margin-left: 30px; margin-top: 30px;">
         <div style="width: 550px; height: 350px; text-align: center">
-            <img src="${commodity.commimgpath}" style="width: auto; height: 80%; margin-top: 40px"/>
+            <img src="${commodity.commimgpath}" alt="" id="datu" style="max-width: 550px; height: 80%; margin-top: 40px"/>
         </div>
         <div style="width: 540px; height: 130px; margin: auto; overflow-x: auto; white-space: nowrap;">
-            <img src="${commodity.commimgpath}" style="width: auto; height: 100px; margin-left: 10px;"/>
+            <img src="${commodity.commimgpath}" class="xiaotu" style="width: auto; height: 100px; margin-left: 10px; cursor:pointer;"/>
             <c:forEach items="${commodityImg}" var="img">
-                <img src="${img.commimgpath}" style="width: auto; height: 100px; margin-left: 10px;"/>
+                <img src="${img.commimgpath}" class="xiaotu" style="width: auto; height: 100px; margin-left: 10px; cursor:pointer;"/>
             </c:forEach>
         </div>
     </div>
@@ -49,7 +49,7 @@
             </div>
             <div class="comm-details">
                 <span style="font-size: 20px">商品简介：</span>
-                <textarea style="width: 340px; height: 250px; margin-top: 10px; font-size: 20px">${commodity.commdrief}</textarea>
+                <textarea class="form-control" style="resize:none; background: rgba(0, 0, 0, 0); margin-top: 20px; height: 250px" readonly>${commodity.commdrief}</textarea>
             </div>
             <div class="comm-details" style="margin-left: 30px;">
                 <a href="/userStore">
@@ -66,9 +66,7 @@
             </div>
             <div class="comm-details">
                 <label style="font-size: 20px;">商品简介：</label>
-                <textarea class="form-control"
-                          style="resize:none; background: rgba(0, 0, 0, 0); margin-top: 20px; height: 250px"
-                          readonly>${commodity.commdrief}</textarea>
+                <textarea class="form-control" style="resize:none; background: rgba(0, 0, 0, 0); margin-top: 20px; height: 250px" readonly>${commodity.commdrief}</textarea>
             </div>
             <c:if test="${userinfo.userstate == '封禁'}">
                 <button type="button" class="layui-btn layui-btn-danger">该账号已封禁</button>
@@ -123,7 +121,7 @@
                         </c:if>
                         <textarea class="form-control" style="resize:none;" readonly>评论：${ent.commtext}</textarea>
                     </div>
-                    <p>评论时间：<fmt:formatDate value="${ent.commdate}" pattern="yyyy-MM-dd"/></p>
+                    <p>评论时间：<fmt:formatDate value="${ent.commdate}" pattern="yyyy-MM-dd hh:mm:ss"/></p>
                 </div>
                 <div style="clear: both; margin-bottom: 5px"></div>
             </div>
@@ -150,6 +148,13 @@
         var $ = layui.jquery
             , element = layui.element;
     });
+</script>
+
+<script>
+    $(".xiaotu").click(function () {
+        var xiaotu = $(this)[0].src;
+        $("#datu").attr('src',xiaotu);
+    })
 </script>
 
 </body>

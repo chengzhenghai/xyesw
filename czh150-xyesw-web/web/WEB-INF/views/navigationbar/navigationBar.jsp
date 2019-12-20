@@ -10,6 +10,7 @@
             <li class="layui-nav-item"><a href="/userOrder" style="text-decoration:none;">我的购买</a></li>
             <li class="layui-nav-item"><a href="/userCommOrder" style="text-decoration:none;">我的出售</a></li>
             <li class="layui-nav-item"><a href="/userInfo" style="text-decoration:none;">我的信息</a></li>
+            <li class="layui-nav-item"><a href="/getAnnouncementAll" style="text-decoration:none;">系统公告</a></li>
         </ul>
         <form method="get" action="/getCommodityName">
             <ul class="layui-nav layui-layout-right">

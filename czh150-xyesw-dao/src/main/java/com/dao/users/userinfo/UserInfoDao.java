@@ -16,4 +16,10 @@ public interface UserInfoDao {
 
     //修改用户头像
     void updateUserImg(@Param("userimg") String userimg,@Param("userid") int userid);
+
+    //修改密码
+    void updateUserPaasword(@Param("userid")int userid, @Param("userpass")String userpass);
+
+
+
 }

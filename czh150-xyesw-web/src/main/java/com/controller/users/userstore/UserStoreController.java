@@ -2,6 +2,7 @@ package com.controller.users.userstore;
 
 import com.entity.commodity.Commodity;
 import com.entity.commodity.CommodityImg;
+import com.entity.order.Commorder;
 import com.entity.user.Userinfo;
 import com.entity.user.Users;
 import com.github.pagehelper.PageInfo;
@@ -9,6 +10,7 @@ import com.service.commodity.commodityinfo.CommodityService;
 import com.service.commodity.commoditytype.CommTypesService;
 import com.service.users.comment.CommentService;
 import com.service.users.userinfo.UserInfoService;
+import com.service.users.userorder.UserOrderService;
 import com.service.users.userstore.UserStoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,8 @@ public class UserStoreController {
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
+    private UserOrderService userOrderService;
+    @Autowired
     private CommTypesService commTypesService;
     @Autowired
     private CommentService commentService;
@@ -51,6 +55,15 @@ public class UserStoreController {
         List<Commodity> myCommodity = userStoreService.getMyCommodity(pageNum, pageSize, users.getUserid());
         PageInfo pageInfo = new PageInfo(myCommodity);
         model.addAttribute("myComm", pageInfo);
+        //出售的商品数量
+        int zaishozhong = 0;
+        for (Commodity commodity : myCommodity) {
+            if ("在售中".equals(commodity.getCommstate())) {
+                zaishozhong++;
+            }
+        }
+        model.addAttribute("zaishozhong", zaishozhong);
+
         return "users/userstore/userStore";
     }
 
@@ -85,6 +98,7 @@ public class UserStoreController {
             e.printStackTrace();
         }
         //添加商品
+        commodity.setCommstate("在售中");
         userStoreService.insertMyComm(commodity);
         //获取到最新添加的商品id
         int typeCommId = commTypesService.commTypeId();
@@ -97,12 +111,14 @@ public class UserStoreController {
     @RequestMapping("/deleteMyComm")
     @Transactional
     public String deleteMyComm(int commid) {
-        //删除商品图片
-        userStoreService.deleteCommodityImg(commid);
-        //删除商品分类
-        commTypesService.deleteCommtype(commid);
-        //删除商品评论
-        commentService.deleteComment(commid);
+//        //删除商品图片
+//        userStoreService.deleteCommodityImg(commid);
+//        //删除商品分类
+//        commTypesService.deleteCommtype(commid);
+//        //删除商品评论
+//        commentService.deleteComment(commid);
+//        //删除订单
+//        userOrderService.deleteOrder(commid);
         //删除商品
         userStoreService.deleteMyComm(commid);
         return "redirect:userStore";
@@ -181,9 +197,14 @@ public class UserStoreController {
 
     //修改商品状态：上架
     @RequestMapping("/updateCommState")
-    public String updateCommState(int commid, String commstate) {
-        commodityService.updateCommState(commid, commstate);
-        return "";
+    public String updateCommState(int commid, HttpSession session) {
+        int state = userOrderService.orderState(commid, "已完成");
+        if (state > 0) {
+            session.setAttribute("commState", "商品订单已完成之后才可以从新上架");
+            return "redirect:userStore";
+        }
+        commodityService.updateCommState(commid, "在售中");
+        return "redirect:userStore";
     }
 
 }

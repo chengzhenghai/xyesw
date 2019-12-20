@@ -55,37 +55,40 @@
     </div>
 
     <div class="layui-body">
-        <h3 style="margin-left: 30px; margin-top: 10px;">评论管理</h3>
-        <hr>
 
+        <h3 style="margin-left: 30px; margin-top: 10px">系统公告</h3>
+        <hr>
+        <button type="button" class="btn btn-primary" id="insertStudent">发布公告</button>
         <table class="table table-hover">
             <tr>
-                <th>编号</th>
-                <th>用户id</th>
-                <th>商品id</th>
-                <th>评论内容</th>
-                <th>评论时间</th>
+                <th style="width: 200px;">发布时间</th>
+                <th style="width: 250px;">公告图片</th>
+                <th>公告详情</th>
+                <th style="width: 100px;">操作</th>
             </tr>
-            <c:forEach items="${entList.list}" var="ent">
+            <c:forEach items="${anno.list}" var="a">
                 <tr>
-                    <td>${ent.commentid}</td>
-                    <td>${ent.userid}</td>
-                    <td>${ent.commid}</td>
-                    <td><p>${ent.commtext}</p></td>
-                    <td><fmt:formatDate value="${ent.commdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
+                    <td><fmt:formatDate value="${a.onticedate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
+                    <td><img src="${a.onticeimg}" style="max-width: 250px; height: 100px;"/></td>
+                    <td>
+                        <textarea class="form-control" style="height: 90px; resize: vertical;" readonly>${a.onticetext}</textarea>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-primary">修改公告</button>
+                    </td>
                 </tr>
             </c:forEach>
         </table>
 
-        <div style="text-align: center">
+        <div style="width: auto; height: auto; text-align: center">
             <ul class="pagination">
-                <li><a id="1" class="comm-paging" style="cursor:pointer;">首页</a></li>
-                <li><a id="${entList.prePage}" class="comm-paging" style="cursor:pointer;">上一页</a></li>
-                <c:forEach items="${entList.navigatepageNums}" var="page">
-                    <li><a id="${page}" class="comm-paging" style="cursor:pointer;">${page}</a></li>
+                <li><a href="/adminAnnouncementAll?pageNum=1">首页</a></li>
+                <li><a href="/adminAnnouncementAll?pageNum=${anno.prePage}">上一页</a></li>
+                <c:forEach items="${anno.navigatepageNums}" var="page">
+                    <li><a href="/adminAnnouncementAll?pageNum=${page}">${page}</a></li>
                 </c:forEach>
-                <li><a id="${entList.nextPage}" class="comm-paging" style="cursor:pointer;">下一页</a></li>
-                <li><a id="${entList.pages}" class="comm-paging" style="cursor:pointer;">尾页</a></li>
+                <li><a href="/adminAnnouncementAll?pageNum=${anno.nextPage}">下一页</a></li>
+                <li><a href="/adminAnnouncementAll?pageNum=${anno.pages}">尾页</a></li>
             </ul>
         </div>
 
@@ -95,21 +98,6 @@
         <div id="div1"></div>
     </div>
 </div>
-
-<script>
-    //分页
-    $(".comm-paging").click(function () {
-        $.ajax({
-            method: "GET",
-            url: "${pageContext.request.contextPath}/commentList",
-            data: {
-                pageNum: $(this).attr("id")
-            }
-        }).done(function (res) {
-            $(".layui-body").html(res);
-        })
-    });
-</script>
 
 <script>
     // 页面加载时要做的事情

@@ -1,5 +1,8 @@
 package com.service.users.userstore.impl;
 
+import com.dao.commodity.commoditytype.CommTypesDao;
+import com.dao.users.comment.CommentDao;
+import com.dao.users.userorder.UserOrderDao;
 import com.dao.users.userstore.UserStoreDao;
 import com.entity.commodity.Commodity;
 import com.entity.commodity.CommodityImg;
@@ -14,6 +17,14 @@ import java.util.List;
 public class UserStoreServiceImpl implements UserStoreService {
     @Autowired
     private UserStoreDao dao;
+    @Autowired
+    private UserStoreDao userStoreDao;
+    @Autowired
+    private UserOrderDao userOrderDao;
+    @Autowired
+    private CommTypesDao commTypesDao;
+    @Autowired
+    private CommentDao commentDao;
 
     //查询所有我的商品
     @Override
@@ -23,7 +34,6 @@ public class UserStoreServiceImpl implements UserStoreService {
 
     //删除商品图片
     @Override
-
     public void deleteCommodityImg(int commimg) {
         dao.deleteCommodityImg(commimg);
     }
@@ -36,7 +46,17 @@ public class UserStoreServiceImpl implements UserStoreService {
 
     //删除商品
     @Override
+    @Transactional
     public void deleteMyComm(int commid) {
+        //删除商品图片
+        userStoreDao.deleteCommodityImg(commid);
+        //删除商品分类
+        commTypesDao.deleteCommtype(commid);
+        //删除商品评论
+        commentDao.deleteComment(commid);
+        //删除订单
+        userOrderDao.deleteCommOrder(commid);
+        //删除商品
         dao.deleteMyComm(commid);
     }
 

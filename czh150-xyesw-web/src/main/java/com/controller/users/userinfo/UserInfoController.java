@@ -2,6 +2,7 @@ package com.controller.users.userinfo;
 
 import com.entity.user.Userinfo;
 import com.entity.user.Users;
+import com.service.users.enter.UsersService;
 import com.service.users.userinfo.UserInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,20 @@ public class UserInfoController {
             e.printStackTrace();
         }
         userInfoService.updateUserImg(path, userid);
+        return "redirect:userInfo";
+    }
+
+    //异步跳转到修改密码
+    @RequestMapping("/updateSkipPass")
+    public String updateSkipPass(int userid, Model model) {
+        model.addAttribute("userid", userid);
+        return "/users/userinfo/updateUserPassword";
+    }
+
+    //修改密码
+    @RequestMapping("/updateUserPass")
+    public String updateUserPass(int userid, String userpass) {
+        userInfoService.updateUserPaasword(userid, userpass);
         return "redirect:userInfo";
     }
 

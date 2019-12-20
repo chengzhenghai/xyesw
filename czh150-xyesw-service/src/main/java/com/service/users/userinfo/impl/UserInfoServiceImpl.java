@@ -32,5 +32,11 @@ public class UserInfoServiceImpl implements UserInfoService {
         dao.updateUserImg(userimg, userid);
     }
 
+    //修改密码
+    @Override
+    public void updateUserPaasword(int userid, String userpass) {
+        dao.updateUserPaasword(userid, userpass);
+    }
+
 
 }

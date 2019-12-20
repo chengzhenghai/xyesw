@@ -19,4 +19,9 @@
         update userinfo set userimg = #{userimg} where userid = #{userid}
     </update>
 
+    <!--修改密码-->
+    <update id="updateUserPaasword">
+        update users set userpass = #{userpass} where userid = #{userid}
+    </update>
+
 </mapper>

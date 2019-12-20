@@ -6,12 +6,22 @@
 
     <!--查询用户所有订单-->
     <select id="getCommOrderAll" resultType="com.entity.order.Commorder">
-        select A.orderid, A.orderdate, A.userid, A.userids, A.commid, A.ordertotal, A.orderstate, B.username, C.commname from commorder A,userinfo B,commodity C where A.userid = B.userid and A.commid = C.commid and A.userid = #{userid} and orderstate = #{orderstate}
+        select A.orderid, A.orderdate, A.userid, A.userids, A.commid, A.ordertotal, A.orderstate, B.username, C.commname from commorder A,userinfo B,commodity C where A.userid = B.userid and A.commid = C.commid and A.userid = #{userid} and A.orderstate = #{orderstate}
+    </select>
+
+    <!--查询有多少条订单-->
+    <select id="orders" resultType="int">
+        select count(*) from commorder where userid = #{userid} and orderstate = #{orderstate}
     </select>
 
     <!--查询用户所有出售中的商品-->
     <select id="getCommAll" resultType="com.entity.order.Commorder">
         select A.orderid, A.orderdate, A.userid, A.userids, A.commid, A.ordertotal, A.orderstate, B.commname from commorder A, commodity B where A.userids = #{userid} and orderstate != '在售中' and A.commid = B.commid and orderstate = #{orderstate}
+    </select>
+
+    <!--查询有多少条订单-->
+    <select id="ordersComm" resultType="int">
+        select count(*) from commorder where userids = #{userid} and orderstate = #{orderstate}
     </select>
 
     <!--修改订单状态-->
@@ -29,4 +39,14 @@
         insert into commorder(orderid, orderdate, userid, userids, commid, ordertotal, orderstate)
         values (#{orderid},#{orderdate},#{userid},#{userids},#{commid},#{ordertotal},#{orderstate})
     </insert>
+
+    <!--通过商品id查询订单状态-->
+    <select id="orderState" resultType="int">
+        select count(*) from commorder where commid = #{commid} and orderstate != #{orderstate}
+    </select>
+
+    <!--通过商品id删除订单-->
+    <delete id="deleteCommOrder">
+        delete from commorder where commid = #{commid}
+    </delete>
 </mapper>

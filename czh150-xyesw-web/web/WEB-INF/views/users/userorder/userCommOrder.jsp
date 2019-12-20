@@ -17,7 +17,7 @@
 <h3 style="margin-left: 30px; margin-top: 30px">我的出售</h3>
 <hr>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已支付的订单</h3>
+<h3 style="margin-left: 30px; margin-top: 30px">已支付的订单：${orders1}</h3>
 <hr>
 <div style="width: auto; height: auto; margin: auto">
     <table class="table table-hover" style="table-layout:fixed;">
@@ -44,7 +44,7 @@
     </table>
 </div>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已发货的订单</h3>
+<h3 style="margin-left: 30px; margin-top: 30px">已发货的订单：${orders2}</h3>
 <hr>
 <div style="width: auto; height: auto; margin: auto">
     <table class="table table-hover" style="table-layout:fixed;">
@@ -65,7 +65,7 @@
     </table>
 </div>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已完成的订单</h3>
+<h3 style="margin-left: 30px; margin-top: 30px">已完成的订单：${orders3}</h3>
 <hr>
 <div style="width: auto; height: auto; margin: auto">
     <table class="table table-hover" style="table-layout:fixed;">
