@@ -58,7 +58,7 @@
 
         <h3 style="margin-left: 30px; margin-top: 10px">系统公告</h3>
         <hr>
-        <button type="button" class="btn btn-primary" id="insertStudent">发布公告</button>
+        <button type="button" class="btn btn-primary" id="insertAnnouncement">发布公告</button>
         <table class="table table-hover">
             <tr>
                 <th style="width: 200px;">发布时间</th>
@@ -74,7 +74,12 @@
                         <textarea class="form-control" style="height: 90px; resize: vertical;" readonly>${a.onticetext}</textarea>
                     </td>
                     <td>
-                        <button type="button" class="btn btn-primary">修改公告</button>
+                        <a class="updateAnnouncement" ontice-id="${a.onticeid}" ontice-text="${a.onticetext}" ontice-img="${a.onticeimg}">
+                            <button type="button" class="btn btn-primary">修改公告</button><br>
+                        </a>
+                        <a href="/deleteAnnouncement?onticeid=${a.onticeid}" onClick="return confirm('确定要删除吗？')">
+                            <button type="button" class="btn btn-danger"  id="deleteAnnouncement" style="margin-top: 10px;">删除公告</button>
+                        </a>
                     </td>
                 </tr>
             </c:forEach>
@@ -100,6 +105,30 @@
 </div>
 
 <script>
+    //添加1
+    $("#insertAnnouncement").click(function () {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/skipInsertAnnouncement",
+        }).done(function (res) {
+            $(".layui-body").html(res);
+        })
+    });
+    //修改
+    $(".updateAnnouncement").click(function () {
+        $.ajax({
+            method: "GET",
+            url: "${pageContext.request.contextPath}/skipUpdateAnnouncement",
+            data: {
+                onticeid: $(this).attr("ontice-id"),
+                onticeimg: $(this).attr("ontice-img"),
+                onticetext: $(this).attr("ontice-text"),
+            }
+        }) .done(function (res) {
+            $(".layui-body").html(res);
+        })
+    });
+
     // 页面加载时要做的事情
     window.onload=function(){
         setInterval(function(){

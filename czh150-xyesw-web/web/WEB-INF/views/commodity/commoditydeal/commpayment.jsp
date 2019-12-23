@@ -13,7 +13,11 @@
 
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
-<h3 style="margin-left: 30px; margin-top: 20px">支付详情</h3>
+<h3 style="margin-left: 30px; margin-top: 20px">支付详情
+    <a href="">
+        <button type="button" class="btn btn-primary">返回</button>
+    </a>
+</h3>
 <hr>
 
 <div style="border: 1px solid yellow; width: 600px; height: 350px; margin: auto;">
@@ -45,22 +49,35 @@
         <label>发件地址：</label>
         <input type="text" class="form-control" value="${info.userfajian}" readonly>
 
-        <label>收件地址：</label>
-        <input type="text" class="form-control" value="${sessionScope.userinfo.usershojian}">
+        <label>收件地址：<sapn id="tishi" style="color: red;"></sapn></label>
+        <input type="text" class="form-control" id="sjdz" value="${sessionScope.userinfo.usershojian}">
     </div>
     <div style="width: 220px; float: left; margin-top: 10px; margin-left: 30px;">
         <label>实际价格：</label>
         <input type="text" class="form-control" id="money" value="${comm.commmoney + 2}" readonly>
     </div>
     <div style="float: left; width: 220px; height: 100px; margin-left: 100px; margin-top: 20px;">
-        <a href="/weixin?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
+        <a class="pd" href="/weixin?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
             <img src="/static/system-img/weixin.jpg" title="支付宝" style="width: 100px; height: 100px;">
         </a>
-        <a href="/zhufubao?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
+        <a class="pd" href="/zhufubao?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
             <img src="/static/system-img/zhifubao.png" title="微信" style="width: 100px; height: 100px;">
         </a>
     </div>
 </div>
+
+<script>
+
+    $('.pd').click(function (e) {
+        if($("#sjdz").val() === "") {
+            alert("请填写收件地址！");
+            document.getElementById('tishi').innerText = '请填写收件地址！';
+            e.preventDefault()
+        }
+        return true
+    });
+
+</script>
 
 </body>
 </html>

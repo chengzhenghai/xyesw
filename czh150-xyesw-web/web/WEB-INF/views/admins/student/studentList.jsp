@@ -81,7 +81,7 @@
                         <td>${s.userfajian}</td>
                         <td>${s.userstate}</td>
                         <td>
-                            <a href="" style="text-decoration:none;">
+                            <a href="" style="text-decoration:none;" onClick="return confirm('确定要封禁用户吗？')">
                                 <button type="button" class="layui-btn layui-btn-danger" state="封禁" id="${s.userid}">封禁账号
                                 </button>
                             </a>
@@ -163,6 +163,13 @@
             }
         })
     });
+
+    // 页面加载时要做的事情
+    window.onload=function(){
+        setInterval(function(){
+            fnDate();
+        },1000);
+    };
 </script>
 
 <script>

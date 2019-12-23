@@ -87,7 +87,7 @@ public class CommodityOperationController {
         } else {
             model.addAttribute("commstype", "");
         }
-        return "commdoityasynch/commTypes";
+        return "commodity/commodityhome/commTypes";
     }
 
 

@@ -8,6 +8,21 @@
         select onticeid, onticetext, onticeimg, onticedate from announcement order by onticeid desc
     </select>
 
+    <!--发布公告-->
+    <insert id="insertAnnouncement">
+        insert into announcement(onticetext, onticeimg, onticedate) values (#{onticetext},#{onticeimg},#{onticedate})
+    </insert>
+
+    <!--删除公告-->
+    <delete id="deleteAnnouncement">
+        delete from announcement where onticeid = #{onticeid}
+    </delete>
+
+    <!--修改公告-->
+    <update id="updateAnnouncement">
+        update announcement set onticetext = #{onticetext} ,onticeimg = #{onticeimg} ,onticedate = #{onticedate} where onticeid = #{onticeid}
+    </update>
+
 </mapper>
 
 

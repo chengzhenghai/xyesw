@@ -41,8 +41,6 @@ public class UserStoreController {
     @Autowired
     private CommTypesService commTypesService;
     @Autowired
-    private CommentService commentService;
-    @Autowired
     private CommodityService commodityService;
 
     //我的店铺

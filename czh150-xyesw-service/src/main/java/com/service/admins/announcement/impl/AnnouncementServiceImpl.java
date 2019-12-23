@@ -18,4 +18,22 @@ public class AnnouncementServiceImpl implements AnnouncementService {
     public List<Announcement> getAnnouncementAll(int pageNum, int pageSize) {
         return dao.getAnnouncementAll(pageNum, pageSize);
     }
+
+    //添加
+    @Override
+    public void insertAnnouncement(Announcement announcement) {
+        dao.insertAnnouncement(announcement);
+    }
+
+    //删除
+    @Override
+    public void deleteAnnouncement(int onticeid) {
+        dao.deleteAnnouncement(onticeid);
+    }
+
+    //修改
+    @Override
+    public void updateAnnouncement(Announcement announcement) {
+        dao.updateAnnouncement(announcement);
+    }
 }

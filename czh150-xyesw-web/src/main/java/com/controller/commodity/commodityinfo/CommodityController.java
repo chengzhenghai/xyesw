@@ -88,7 +88,7 @@ public class CommodityController {
         return "users/userstore/commodityImgs";
     }
 
-    //跳转到我联系商家界面
+    //跳转到联系商家界面
     @RequestMapping("/userRelation")
     public String userRelation(int commid, int userid, Model model) {
         //商品信息

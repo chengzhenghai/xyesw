@@ -12,7 +12,11 @@
 
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
-<h3 style="margin-left: 30px; margin-top: 20px">联系商家</h3>
+<h3 style="margin-left: 30px; margin-top: 20px">联系商家
+    <a href="">
+        <button type="button" class="btn btn-primary">返回</button>
+    </a>
+</h3>
 <hr>
 
 <div style="width: 800px; height: auto; margin: auto;">
