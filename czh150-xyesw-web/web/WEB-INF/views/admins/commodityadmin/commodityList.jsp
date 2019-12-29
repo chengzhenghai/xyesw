@@ -62,9 +62,9 @@
         <table class="table table-hover">
             <tr>
                 <th>商品编号</th>
+                <th>商品图片</th>
                 <th>商品名</th>
                 <th>商品价格</th>
-                <th>商品图片</th>
                 <th>商品简介</th>
                 <th>商品状态</th>
                 <th>商家</th>
@@ -73,9 +73,9 @@
                 <c:if test="${s.commstate == '在售中'}">
                     <tr>
                         <td>${s.commid}</td>
+                        <td><img src="${s.commimgpath}" style="width: 50px; height: 50px"></td>
                         <td>${s.commname}</td>
                         <td>${s.commmoney}</td>
-                        <td><img src="${s.commimgpath}" style="width: 50px; height: 50px"></td>
                         <td>${s.commdrief}</td>
                         <td>${s.commstate}</td>
                         <td>${s.username}</td>

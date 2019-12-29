@@ -18,7 +18,7 @@
         <li class="layui-this"><a href="/homepage" style="text-decoration:none; font-size: 20px">所有商品</a></li>
         <c:forEach items="${typeall}" var="type">
             <li style="margin-left: 15px">
-                <a class="comm-type" id="${type.typesid}" style="text-decoration:none; font-size: 20px">${type.typestext}</a>
+                <a class="comm-type" id="${type.typesid}" style="text-decoration:none; font-size: 19px">${type.typestext}</a>
             </li>
         </c:forEach>
     </ul>

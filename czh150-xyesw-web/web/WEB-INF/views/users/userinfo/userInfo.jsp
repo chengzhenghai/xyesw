@@ -19,7 +19,7 @@
         <form action="/updateInfoImg" method="post" enctype="multipart/form-data">
             <input type="hidden" name="userid" value="${info.userid}" readonly="readonly">
             <input type="file" name="userimg" id="exampleFormControlFile5" style="display:none">
-            <img src="${info.userimg}" style="width: 250px; height: 250px; border-radius:50%;" id="exampleFormControlFile6" onclick="F_Open_dialog()"/>
+            <img src="${info.userimg}" style="width: 250px; height: 250px; border-radius:50%; cursor: pointer;" id="exampleFormControlFile6" onclick="F_Open_dialog()"/>
             <button type="submit" class="btn btn-primary">提交</button>
         </form>
     </div>

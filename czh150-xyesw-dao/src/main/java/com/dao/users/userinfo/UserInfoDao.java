@@ -20,6 +20,11 @@ public interface UserInfoDao {
     //修改密码
     void updateUserPaasword(@Param("userid")int userid, @Param("userpass")String userpass);
 
+    //修改用户收件地址
+    void updateShojian(@Param("userid")int userid, @Param("usershojian")String usershojian);
+
+    //修改用户发件地址
+    void updateFajian(@Param("userid")int userid, @Param("userfajian")String userfajian);
 
 
 }

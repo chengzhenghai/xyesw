@@ -105,7 +105,7 @@
 </div>
 
 <script>
-    //添加1
+    //添加
     $("#insertAnnouncement").click(function () {
         $.ajax({
             method: "GET",

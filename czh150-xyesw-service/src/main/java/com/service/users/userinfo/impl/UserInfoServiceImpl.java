@@ -38,5 +38,17 @@ public class UserInfoServiceImpl implements UserInfoService {
         dao.updateUserPaasword(userid, userpass);
     }
 
+    //修改用户收件地址
+    @Override
+    public void updateShojian(int userid, String usershojian) {
+        dao.updateShojian(userid, usershojian);
+    }
+
+    //修改用户发件地址
+    @Override
+    public void updateFajian(int userid, String userfajian) {
+        dao.updateFajian(userid, userfajian);
+    }
+
 
 }

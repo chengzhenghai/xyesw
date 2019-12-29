@@ -13,7 +13,7 @@
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
 <h3 style="margin-left: 30px; margin-top: 20px">联系商家
-    <a href="">
+    <a href="/commodityDetails?commid=${commodity.commid}">
         <button type="button" class="btn btn-primary">返回</button>
     </a>
 </h3>
@@ -40,7 +40,7 @@
         </div>
     </div>
     <div style="width: 800px; height: 120px; border: 1px solid aqua">
-        <form>
+
             <div style="width: 720px; height: 110px; float: left;">
                 <img src="${sessionScope.userinfo.userimg}" style="width: 50px; height: 50px; border-radius:50%; float: left; margin-left: 20px; margin-top: 10px;">
                 <textarea name="" class="form-control" style="width: 620px; height: 100px; float: left; resize:none; margin-left: 20px; margin-top: 5px;" placeholder="请输入"></textarea>
@@ -48,7 +48,7 @@
             <div style="width: auto; float: right; margin-top: 75px; margin-right: 20px;">
                 <button class="btn btn-primary">发送</button>
             </div>
-        </form>
+
     </div>
 </div>
 

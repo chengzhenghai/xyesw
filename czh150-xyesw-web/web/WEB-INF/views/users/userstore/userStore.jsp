@@ -16,11 +16,10 @@
 <h3 style="margin-left: 30px; margin-top: 20px">我的店铺：在售商品：${zaishozhong}</h3>
 <hr>
 
-<a href="/insertComm" style="text-decoration:none;">
-    <button type="button" class="btn btn-primary">添加商品</button>
-</a>
-
 <div style="width: 1100px; height: auto; margin: auto">
+    <a href="/insertComm" style="text-decoration:none;">
+        <button type="button" class="btn btn-primary">添加商品</button>
+    </a>
     <table class="table table-hover" style="width: 1000px; table-layout:fixed;">
         <tr>
             <th style="width: 80px;">商品编号</th>
@@ -73,7 +72,7 @@
     </ul>
 </div>
 
-<h3 style="margin-left: 30px; margin-top: 20px">已售商品</h3>
+<h3 style="margin-left: 30px; margin-top: 20px">已售商品：${yichusho}</h3>
 <hr>
 
 <div style="width: 1100px; height: auto; margin: auto">

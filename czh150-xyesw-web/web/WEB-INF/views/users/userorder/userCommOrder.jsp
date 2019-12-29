@@ -17,77 +17,78 @@
 <h3 style="margin-left: 30px; margin-top: 30px">我的出售</h3>
 <hr>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已支付的订单：${orders1}</h3>
-<hr>
-<div style="width: auto; height: auto; margin: auto">
-    <table class="table table-hover" style="table-layout:fixed;">
-        <tr>
-            <td>商品名称</td>
-            <td>商品价格</td>
-            <td>下单时间</td>
-            <td>订单状态</td>
-            <td>操作</td>
-        </tr>
-        <c:forEach items="${commList1}" var="order">
+<div style="width: 1100px; height: auto; margin: auto">
+    <h3 style="margin-left: 30px; margin-top: 30px">已支付的订单：${orders1}</h3>
+    <hr>
+    <div style="width: auto; height: auto; margin: auto">
+        <table class="table table-hover" style="table-layout:fixed;">
             <tr>
-                <td>${order.commname}</td>
-                <td>${order.ordertotal}</td>
-                <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
-                <td>${order.orderstate}</td>
-                <td>
-                    <a href="/updateCommOrderState?orderid=${order.orderid}&orderstate=已发货">
-                        <button class="btn btn-primary">发货</button>
-                    </a>
-                </td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>下单时间</td>
+                <td>订单状态</td>
+                <td>操作</td>
             </tr>
-        </c:forEach>
-    </table>
-</div>
+            <c:forEach items="${commList1}" var="order">
+                <tr>
+                    <td>${order.commname}</td>
+                    <td>${order.ordertotal}</td>
+                    <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
+                    <td>${order.orderstate}</td>
+                    <td>
+                        <a href="/updateCommOrderState?orderid=${order.orderid}&orderstate=已发货">
+                            <button class="btn btn-primary">发货</button>
+                        </a>
+                    </td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已发货的订单：${orders2}</h3>
-<hr>
-<div style="width: auto; height: auto; margin: auto">
-    <table class="table table-hover" style="table-layout:fixed;">
-        <tr>
-            <td>商品名称</td>
-            <td>商品价格</td>
-            <td>下单时间</td>
-            <td>订单状态</td>
-        </tr>
-        <c:forEach items="${commList2}" var="order">
+    <h3 style="margin-left: 30px; margin-top: 30px">已发货的订单：${orders2}</h3>
+    <hr>
+    <div style="width: auto; height: auto; margin: auto">
+        <table class="table table-hover" style="table-layout:fixed;">
             <tr>
-                <td>${order.commname}</td>
-                <td>${order.ordertotal}</td>
-                <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
-                <td>${order.orderstate}</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>下单时间</td>
+                <td>订单状态</td>
             </tr>
-        </c:forEach>
-    </table>
-</div>
+            <c:forEach items="${commList2}" var="order">
+                <tr>
+                    <td>${order.commname}</td>
+                    <td>${order.ordertotal}</td>
+                    <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
+                    <td>${order.orderstate}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 
-<h3 style="margin-left: 30px; margin-top: 30px">已完成的订单：${orders3}</h3>
-<hr>
-<div style="width: auto; height: auto; margin: auto">
-    <table class="table table-hover" style="table-layout:fixed;">
-        <tr>
-            <td>商品编号</td>
-            <td>商品名称</td>
-            <td>商品价格</td>
-            <td>下单时间</td>
-            <td>订单状态</td>
-        </tr>
-        <c:forEach items="${commList3}" var="order">
+    <h3 style="margin-left: 30px; margin-top: 30px">已完成的订单：${orders3}</h3>
+    <hr>
+    <div style="width: auto; height: auto; margin: auto">
+        <table class="table table-hover" style="table-layout:fixed;">
             <tr>
-                <td>${order.commid}</td>
-                <td>${order.commname}</td>
-                <td>${order.ordertotal}</td>
-                <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
-                <td>${order.orderstate}</td>
+                <td>商品编号</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>下单时间</td>
+                <td>订单状态</td>
             </tr>
-        </c:forEach>
-    </table>
+            <c:forEach items="${commList3}" var="order">
+                <tr>
+                    <td>${order.commid}</td>
+                    <td>${order.commname}</td>
+                    <td>${order.ordertotal}</td>
+                    <td><fmt:formatDate value="${order.orderdate}" pattern="yyyy-MM-dd hh-mm-ss"/></td>
+                    <td>${order.orderstate}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
 </div>
-
 
 <script>
     layui.use('element', function () {

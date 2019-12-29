@@ -25,7 +25,7 @@
 
     <!-- 添加商品 -->
     <insert id="insertMyComm">
-        insert into commodity(commname, commmoney, userid, commdrief, commimgpath, commstate) values(#{commname},#{commmoney},#{userid},#{commdrief},#{commimgpath})
+        insert into commodity(commname, commmoney, userid, commdrief, commimgpath, commstate) values(#{commname},#{commmoney},#{userid},#{commdrief},#{commimgpath},#{commstate})
     </insert>
 
     <!-- 修改商品 -->

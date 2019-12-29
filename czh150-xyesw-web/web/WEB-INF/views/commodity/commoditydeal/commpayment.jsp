@@ -14,7 +14,7 @@
 <%@include file="../../navigationbar/navigationBar.jsp" %>
 
 <h3 style="margin-left: 30px; margin-top: 20px">支付详情
-    <a href="">
+    <a href="/userRelation?commid=${comm.commid}&userid=${info.userid}">
         <button type="button" class="btn btn-primary">返回</button>
     </a>
 </h3>
@@ -58,10 +58,10 @@
     </div>
     <div style="float: left; width: 220px; height: 100px; margin-left: 100px; margin-top: 20px;">
         <a class="pd" href="/weixin?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
-            <img src="/static/system-img/weixin.jpg" title="支付宝" style="width: 100px; height: 100px;">
+            <img src="/static/system-img/zhifubao.png" title="支付宝" style="width: 100px; height: 100px;">
         </a>
         <a class="pd" href="/zhufubao?userid=${sessionScope.users.userid}&userids=${info.userid}&commid=${comm.commid}&ordertotal=${comm.commmoney + 2}&orderstate=已支付">
-            <img src="/static/system-img/zhifubao.png" title="微信" style="width: 100px; height: 100px;">
+            <img src="/static/system-img/weixin.jpg" title="微信" style="width: 100px; height: 100px;">
         </a>
     </div>
 </div>

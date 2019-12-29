@@ -55,12 +55,16 @@ public class UserStoreController {
         model.addAttribute("myComm", pageInfo);
         //出售的商品数量
         int zaishozhong = 0;
+        int yichusho = 0;
         for (Commodity commodity : myCommodity) {
             if ("在售中".equals(commodity.getCommstate())) {
                 zaishozhong++;
+            }else {
+                yichusho++;
             }
         }
         model.addAttribute("zaishozhong", zaishozhong);
+        model.addAttribute("yichusho", yichusho);
 
         return "users/userstore/userStore";
     }
@@ -95,7 +99,7 @@ public class UserStoreController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //添加商品
+        //添加商品:初始状态
         commodity.setCommstate("在售中");
         userStoreService.insertMyComm(commodity);
         //获取到最新添加的商品id
@@ -109,14 +113,6 @@ public class UserStoreController {
     @RequestMapping("/deleteMyComm")
     @Transactional
     public String deleteMyComm(int commid) {
-//        //删除商品图片
-//        userStoreService.deleteCommodityImg(commid);
-//        //删除商品分类
-//        commTypesService.deleteCommtype(commid);
-//        //删除商品评论
-//        commentService.deleteComment(commid);
-//        //删除订单
-//        userOrderService.deleteOrder(commid);
         //删除商品
         userStoreService.deleteMyComm(commid);
         return "redirect:userStore";

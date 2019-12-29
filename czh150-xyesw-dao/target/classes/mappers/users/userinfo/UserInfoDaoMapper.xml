@@ -24,4 +24,14 @@
         update users set userpass = #{userpass} where userid = #{userid}
     </update>
 
+    <!--修改用户收件地址-->
+    <update id="updateShojian">
+        update userinfo set usershojian = #{usershojian} where userid = #{userid}
+    </update>
+
+    <!--修改用户发件地址-->
+    <update id="updateFajian">
+        update userinfo set userfajian = #{userfajian} where userid = #{userid}
+    </update>
+
 </mapper>
