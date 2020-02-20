@@ -8,8 +8,8 @@
 </head>
 <body>
 
-<div style="width: 500px; height: 400px; border: 1px solid salmon; margin: auto; margin-top: 100px; border-radius:20px 20px;">
-    <div style="border: 1px solid black; width: 400px; height: 300px; margin: auto; margin-top: 50px; border-radius:20px 20px;">
+<div style="width: 500px; height: 400px; border: 1px solid salmon; margin: auto; margin-top: 100px; border-radius:20px 20px; background: bisque">
+    <div style="border: 1px solid beige; width: 400px; height: 300px; margin: auto; margin-top: 50px; border-radius:20px 20px; background: white">
         <h2 style="text-align: center">管理员登入</h2>
         <div style="width: 300px; margin: auto;">
             <form method="get" action="/enterAdmin">
